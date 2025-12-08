@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "VOFR/DF0dIU=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\NurseProblem.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tanja\\.nuget\\packages\\google.ortools\\9.14.6206\\google.ortools.9.14.6206.nupkg.sha512",
+    "C:\\Users\\tanja\\.nuget\\packages\\google.ortools.runtime.linux-arm64\\9.14.6206\\google.ortools.runtime.linux-arm64.9.14.6206.nupkg.sha512",
+    "C:\\Users\\tanja\\.nuget\\packages\\google.ortools.runtime.linux-x64\\9.14.6206\\google.ortools.runtime.linux-x64.9.14.6206.nupkg.sha512",
+    "C:\\Users\\tanja\\.nuget\\packages\\google.ortools.runtime.osx-arm64\\9.14.6206\\google.ortools.runtime.osx-arm64.9.14.6206.nupkg.sha512",
+    "C:\\Users\\tanja\\.nuget\\packages\\google.ortools.runtime.osx-x64\\9.14.6206\\google.ortools.runtime.osx-x64.9.14.6206.nupkg.sha512",
+    "C:\\Users\\tanja\\.nuget\\packages\\google.ortools.runtime.win-x64\\9.14.6206\\google.ortools.runtime.win-x64.9.14.6206.nupkg.sha512",
+    "C:\\Users\\tanja\\.nuget\\packages\\google.protobuf\\3.31.1\\google.protobuf.3.31.1.nupkg.sha512"
+  ],
+  "logs": []
+}
