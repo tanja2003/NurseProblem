@@ -1,4 +1,6 @@
 ﻿using Google.OrTools.Sat;
+using NurseProblem.Converter;
+using NurseProblem.Models;
 using NurseProblem.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -41,6 +43,25 @@ namespace NurseProblem
         {
             DataContext = new NurseScheduleViewModel();
 
+        }
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var border = sender as Border;
+            var day = border?.DataContext as ShiftSlot;
+
+            //var vm = new DayCalenderViewModel(day);
+            //var win = new DayWindow(vm);
+            //win.Show();
+        }
+
+        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var stackPanel = sender as StackPanel;
+            var day = stackPanel?.DataContext as DaySchedule;
+            var vm = new DayCalenderViewModel(day);
+            var win = new DayWindow(vm);
+            win.Show();
         }
 
 

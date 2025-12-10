@@ -434,3 +434,5 @@ C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem\obj\Debug\net8.0-windows\NursePr
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem\obj\Debug\net8.0-windows\ref\NurseProblem.dll
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem\obj\Debug\net8.0-windows\NurseProblem_MarkupCompile.lref
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem\obj\Debug\net8.0-windows\DayWindow.g.cs
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem\obj\Debug\net8.0-windows\DayWindow.baml

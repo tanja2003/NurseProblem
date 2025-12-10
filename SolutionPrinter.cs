@@ -35,7 +35,7 @@ namespace NurseProblem
                     {
                         if (Value(shifts_[(n, d, s)]) == 1)
                         {
-                            assignments.Add(new Assignment(n, d, s));
+                            assignments.Add(new Assignment(n, d,d, s)); // TODO: WorkerPerShift
                         }
                     }
                 }

@@ -11,13 +11,15 @@ namespace NurseProblem.Models
         public int NurseId { get; }
         public int Day { get; }
         public int Shift { get; }
+        public int WorkerSlots { get; }
 
         
 
-        public Assignment(int nurseId, int day, int shift)
+        public Assignment(int nurseId, int day, int workerPerShift, int shift)
         {
             NurseId = nurseId;
             Day = day;
+            WorkerSlots = workerPerShift;
             Shift = shift;
         }
 

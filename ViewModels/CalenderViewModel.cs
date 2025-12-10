@@ -56,7 +56,7 @@ namespace NurseProblem.ViewModels
             // initalize all days
             for (int d = 1; d <= daysInMonth; d++)
             {
-                Days.Add(new DaySchedule
+                Days.Add(new DaySchedule(3)  // TODO: Dynamiclly
                 {
                     Date = new DateTime(year, month, d),
                 });
@@ -70,18 +70,19 @@ namespace NurseProblem.ViewModels
                 switch (a.Shift)
                 {
                     case 0:
-                        day.FrühName = Dictionarys.NurseNames[a.NurseId];
-                        day.FrühNurseId = a.NurseId;
+                        day.Früh[a.WorkerSlots].NurseId = a.NurseId;
+                        day.Früh[a.WorkerSlots].NurseName = Dictionarys.NurseNames[a.NurseId];
+
                         break;
 
                     case 1:
-                        day.SpätName = Dictionarys.NurseNames[a.NurseId];
-                        day.SpätNurseId = a.NurseId;
+                        day.Spät[a.WorkerSlots].NurseName = Dictionarys.NurseNames[a.NurseId];
+                        day.Spät[a.WorkerSlots].NurseId = a.NurseId;
                         break;
 
                     case 2:
-                        day.NachtName = Dictionarys.NurseNames[a.NurseId];
-                        day.NachtNurseId = a.NurseId;
+                        day.Nacht[a.WorkerSlots].NurseName = Dictionarys.NurseNames[a.NurseId];
+                        day.Nacht[a.WorkerSlots].NurseId = a.NurseId;
                         break;
                 }
             }
@@ -102,7 +103,7 @@ namespace NurseProblem.ViewModels
 
             foreach (var day in Days)
             {
-                if (day.FrühNurseId != null && day.SpätNurseId != null && day.NachtNurseId != null)
+                if (day.Früh != null && day.Spät != null && day.Nacht != null)
                 {
                     currentWeek.Add(day);
                 }

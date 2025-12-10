@@ -16,12 +16,12 @@ namespace NurseProblem.Services
         public int NumDays { get; }
         public int NumShifts { get; }
 
-        public int NumWorkersPerShift { get; }
+        public int NumWorkerSlot { get; }
 
         public int[] AllNurses => Enumerable.Range(0, NumNurses).ToArray();
         public int[] AllDays => Enumerable.Range(0, NumDays).ToArray();
         public int[] AllShifts => Enumerable.Range(0, NumShifts).ToArray();
-        public int[] AllWorkersPerShift => Enumerable.Range(0, NumWorkersPerShift).ToArray();
+        public int[] AllWorkerSlot => Enumerable.Range(0, NumWorkerSlot).ToArray();
 
 
         public CpSatSchedulerService(int numNurses, int numDays, int numShifts)
@@ -30,52 +30,64 @@ namespace NurseProblem.Services
             NumNurses = numNurses;
             NumDays = numDays;
             NumShifts = numShifts;
-            NumWorkersPerShift = 2;
+            NumWorkerSlot = 3;
         }
         public Schedule Solve()
         {
             // 2. declare Model
             CpModel model = new();
-            model.Model.Variables.Capacity = NumNurses * NumDays * NumShifts * NumWorkersPerShift;
+            model.Model.Variables.Capacity = NumNurses * NumDays * NumShifts * NumWorkerSlot;
 
             // 3. create Variables
-            Dictionary<(int, int, int), BoolVar> shifts = new(NumNurses * NumDays * NumShifts );
+            Dictionary<(int, int, int, int), BoolVar> shifts = new(NumNurses * NumDays * NumShifts * NumWorkerSlot);
             foreach (int n in AllNurses)
             {
                 foreach (int d in AllDays)
                 {
-                    foreach (int s in AllShifts)
+                    foreach (int w in AllWorkerSlot)
                     {
-                        shifts.Add((n, d, s), model.NewBoolVar($"shifts_n{n}d{d}s{s}"));
+                        foreach (int s in AllShifts)
+                        {
+                            shifts.Add((n, d, w, s), model.NewBoolVar($"shifts_n{n}d{d}w{w}s{s}"));
+                        }    
                     }
                 }
             }
 
             // 4. add constraints
 
-            // 4.1 Each shift is assigned to a single nurse every day
-            List<ILiteral> nurses = [];
+            // 4.1 Each shift is assigned to Number of workers per shift every day
+            List<ILiteral> nurses = new(); 
             foreach (int d in AllDays)
             {
                 foreach (int s in AllShifts)
                 {
-                    foreach (int n in AllNurses)
+                    foreach (int w in AllWorkerSlot)
                     {
-                        nurses.Add(shifts[(n, d, s)]);
+                        foreach (int n in AllNurses)
+                        {
+                            nurses.Add(shifts[(n, d, w, s)]);
+                        }
+
+                        // Genau 1 Nurse pro Tag-Schicht-WorkerSlot
+                        model.AddExactlyOne(nurses);
+                        nurses.Clear();
                     }
-                    model.AddExactlyOne(nurses); // in each shift exactlx one nurse
-                    nurses.Clear();
                 }
             }
+
 
             // 4.2 Each nurse works at most one shift per day
             foreach (int n in AllNurses)
             {
                 foreach (int d in AllDays)
                 {
-                    foreach (int s in AllShifts)
+                    foreach (int w in AllWorkerSlot)
                     {
-                        nurses.Add(shifts[(n, d, s)]);
+                        foreach (int s in AllShifts)
+                        {
+                            nurses.Add(shifts[(n, d,w, s)]);
+                        }
                     }
                     model.AddAtMostOne(nurses);
                     nurses.Clear();
@@ -87,9 +99,9 @@ namespace NurseProblem.Services
             // minShiftsPerNurse shifts. If this is not possible, because the total
             // number of shifts is not divisible by the number of nurses, some nurses will
             // be assigned one more shift.
-            int minShiftsPerNurse = (NumShifts * NumDays) / NumNurses;
+            int minShiftsPerNurse = (NumShifts * NumDays * NumWorkerSlot) / NumNurses;
             int maxShiftsPerNurse;
-            if ((NumShifts * NumDays) % NumNurses == 0)
+            if ((NumShifts * NumDays * NumWorkerSlot) % NumNurses == 0)
             {
                 maxShiftsPerNurse = minShiftsPerNurse;
             }
@@ -104,9 +116,12 @@ namespace NurseProblem.Services
                 List<IntVar> shiftsWorkedByNurse = [];
                 foreach (int d in AllDays)
                 {
-                    foreach (int s in AllShifts)
+                    foreach (int w in AllWorkerSlot)
                     {
-                        shiftsWorkedByNurse.Add(shifts[(n, d, s)]);
+                        foreach (int s in AllShifts)
+                        {
+                            shiftsWorkedByNurse.Add(shifts[(n, d, w, s)]);
+                        }
                     }
                 }
 
@@ -127,11 +142,14 @@ namespace NurseProblem.Services
                 {
                     foreach (int d in AllDays)
                     {
-                        foreach (int s in AllShifts)
+                        foreach (int w in AllWorkerSlot)
                         {
-                            if (solver.Value(shifts[(n, d, s)]) == 1)
+                            foreach (int s in AllShifts)
                             {
-                                assignments.Add(new Assignment(n, d, s));
+                                if (solver.Value(shifts[(n, d, w, s)]) == 1)
+                                {
+                                    assignments.Add(new Assignment(n, d,w, s));
+                                }
                             }
                         }
                     }
