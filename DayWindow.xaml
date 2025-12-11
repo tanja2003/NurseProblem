@@ -23,32 +23,84 @@
         <!-- Schichten -->
         <StackPanel Grid.Row="1" Margin="0 15 0 15">
 
-            <!-- Früh -->
-            <StackPanel Orientation="Horizontal" Margin="0 5">
-                <TextBlock Text="Früh:" Width="70" VerticalAlignment="Center"/>
-                <ComboBox Width="200" 
-                          ItemsSource="{Binding AllNurses}"
-                          SelectedItem="{Binding FrühSelected}"
-                          DisplayMemberPath="Name"/>
+            <!-- Frühschicht -->
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Anzahl Worker Slots in der Frühschicht:" VerticalAlignment="Center"/>
+                <ComboBox 
+                    ItemsSource="{Binding Numbers}"
+                    SelectedItem="{Binding SelectFrühSlotCount}"/>
             </StackPanel>
+
+            <ItemsControl ItemsSource="{Binding FrühWorkerSlots}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock 
+                        Text="{Binding SlotNumber, StringFormat=Workerslot {0}:}"
+                        Width="120"
+                        VerticalAlignment="Center"/>
+                            <ComboBox Width="200"
+                              ItemsSource="{Binding DataContext.AllNurses,
+                                    RelativeSource={RelativeSource AncestorType=Window}}"
+                              SelectedItem="{Binding SelectedNurse}"
+                              DisplayMemberPath="Name"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
 
             <!-- Spät -->
-            <StackPanel Orientation="Horizontal" Margin="0 5">
-                <TextBlock Text="Spät:" Width="70" VerticalAlignment="Center"/>
-                <ComboBox Width="200" 
-                          ItemsSource="{Binding AllNurses}"
-                          SelectedItem="{Binding SpätSelected}"
-                          DisplayMemberPath="Name"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Anzahl Worker Slots in der Spätschicht:" VerticalAlignment="Center"/>
+                <ComboBox 
+                    ItemsSource="{Binding Numbers}"
+                    SelectedItem="{Binding SelectSpätSlotCount}"/>
             </StackPanel>
 
+            <ItemsControl ItemsSource="{Binding SpätWorkerSlots}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock 
+                                Text="{Binding SlotNumber, StringFormat=Workerslot {0}:}"
+                                Width="120"
+                                VerticalAlignment="Center"/>
+                            <ComboBox Width="200"
+                                  ItemsSource="{Binding DataContext.AllNurses,
+                                        RelativeSource={RelativeSource AncestorType=Window}}"
+                                  SelectedItem="{Binding SelectedNurse}"
+                                  DisplayMemberPath="Name"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
             <!-- Nacht -->
-            <StackPanel Orientation="Horizontal" Margin="0 5">
-                <TextBlock Text="Nacht:" Width="70" VerticalAlignment="Center"/>
-                <ComboBox Width="200" 
-                          ItemsSource="{Binding AllNurses}"
-                          SelectedItem="{Binding NachtSelected}"
-                          DisplayMemberPath="Name"/>
+            <StackPanel Orientation="Horizontal" Margin="0,5">
+                <TextBlock Text="Anzahl Worker Slots in der Nachtschicht: " VerticalAlignment="Center"/>
+                <ComboBox 
+                    ItemsSource="{Binding Numbers}"
+                    SelectedItem="{Binding SelectNachtSlotCount}"/>
             </StackPanel>
+
+            <ItemsControl ItemsSource="{Binding NachtWorkerSlots}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal" Margin="0 5">
+                            <TextBlock 
+                    Text="{Binding SlotNumber, StringFormat=Workerslot {0}:}"
+                    Width="120"
+                    VerticalAlignment="Center"/>
+                            <ComboBox Width="200"
+                      ItemsSource="{Binding DataContext.AllNurses,
+                            RelativeSource={RelativeSource AncestorType=Window}}"
+                      SelectedItem="{Binding SelectedNurse}"
+                      DisplayMemberPath="Name"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
         </StackPanel>
 

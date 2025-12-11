@@ -1,9 +1,10 @@
-﻿using System;
+﻿using NurseProblem.Converter;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NurseProblem.Converter;
 
 namespace NurseProblem.Models
 {
@@ -13,10 +14,18 @@ namespace NurseProblem.Models
         public string NurseName { get; set; }
     }
 
+    public class WorkerSlot
+{
+    public int SlotNumber { get; set; }
+    public Nurse? SelectedNurse { get; set; }
+}
+
+
     public class DaySchedule
     {
         public DateTime Date { get; set; }
-        public List<ShiftSlot> Früh { get; set; }
+        public ObservableCollection<ShiftSlot> Früh { get; set; } = new();
+
         public List<ShiftSlot> Spät { get; set; }
         public List<ShiftSlot> Nacht { get; set; }
         public bool IsWeekend => Date.DayOfWeek == DayOfWeek.Saturday || Date.DayOfWeek == DayOfWeek.Sunday;
@@ -25,7 +34,10 @@ namespace NurseProblem.Models
 
         public DaySchedule(int slots)
         {
-            Früh = Enumerable.Range(0, slots).Select(_ => new ShiftSlot()).ToList();
+            Früh = new ObservableCollection<ShiftSlot>(
+                Enumerable.Range(0, slots).Select(_ => new ShiftSlot())
+            );
+
             Spät = Enumerable.Range(0, slots).Select(_ => new ShiftSlot()).ToList();
             Nacht = Enumerable.Range(0, slots).Select(_ => new ShiftSlot()).ToList();
         }

@@ -57,11 +57,17 @@ namespace NurseProblem
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var stackPanel = sender as StackPanel;
-            var day = stackPanel?.DataContext as DaySchedule;
-            var vm = new DayCalenderViewModel(day);
-            var win = new DayWindow(vm);
-            win.Show();
+            if (sender is StackPanel sp && sp.DataContext is DaySchedule day)
+            {
+                // WICHTIG: NICHT neues ViewModel erzeugen!
+                var win = new DayWindow(new DayCalenderViewModel(day));
+
+                // Fenster MODAL öffnen
+                if (win.ShowDialog() == true)
+                {
+                    // kein extra Speichern nötig → gleiche Instance von "day" wurde bearbeitet
+                }
+            }
         }
 
 
