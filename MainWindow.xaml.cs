@@ -1,7 +1,9 @@
 ﻿using Google.OrTools.Sat;
 using NurseProblem.Converter;
+using NurseProblem.Datenbank;
 using NurseProblem.Models.UiModelle;
 using NurseProblem.ViewModels;
+using NurseProblem.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,6 +18,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using NavigationService = NurseProblem.Services.NavigationService;
 
 namespace NurseProblem
 {
@@ -30,12 +33,13 @@ namespace NurseProblem
         // Set DataContext
         // NO business logic
         // NO calculations
-        public CalendarViewModel VM { get; set; } = new CalendarViewModel();
-
+        
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = VM;
+            var db = new ScheduleDbContext();
+            var navigation = new NavigationService(db);
+            DataContext = new StartViewModel(navigation);
 
         }
 

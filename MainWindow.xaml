@@ -1,179 +1,34 @@
 ﻿<Window x:Class="NurseProblem.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Nurse Scheduler" Height="800" Width="1500"
+        Title="Nurse Scheduler" Width="780"
+        Height="550"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F6F8"
         xmlns:local="clr-namespace:NurseProblem.Converter">
-    <Window.Resources>
-        <local:NurseToColorConverter x:Key="NurseToColorConverter"/>
-        <local:DictionaryConverter x:Key="NurseConverter" Map="{x:Static local:Dictionarys.NurseNames}"/>
-        <local:DictionaryConverter x:Key="DayConverter" Map="{x:Static local:Dictionarys.DayNames}"/>
-        <local:DictionaryConverter x:Key="ShiftConverter" Map="{x:Static local:Dictionarys.ShiftNames}"/>
-        <local:WeekendColorConverter x:Key="WeekendColorConverter"/>
-    </Window.Resources>
+    <DockPanel Margin="30">
 
-    <StackPanel Margin="10">
-        <Button Content="Schedule berechnen"
-                Command="{Binding CalculateCommand}"
-                Margin="0,0,0,10"/>
-        <StackPanel Orientation="Horizontal">
-            <TextBox Width="200"
- Margin="0,0,0,5"
- Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
-            <ComboBox ItemsSource="{Binding NursesView}"
-  DisplayMemberPath="Name"/>
+        <StackPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
+            <TextBlock FontSize="28" FontWeight="SemiBold">Nurse Scheduler</TextBlock>
+            <TextBlock FontSize="14" Foreground="Gray">Intelligente Dienstplanung für Hebamen</TextBlock>
         </StackPanel>
+        <UniformGrid Rows="2" Columns="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Style="{StaticResource DashboardCardStyle}" 
+                    Content="📅 Dienstplan anzeigen"
+                    Command="{Binding OpenCalendarCommand}"/>
+            <Button Style="{StaticResource DashboardCardStyle}"
+                    Content="⚙️ Dienstplan berechnen"
+                    Command="{ Binding CalculateScheduleCommand}"/>
+            <Button Style="{StaticResource DashboardCardStyle}"
+                    Content="🧑‍⚕️ Pflegekräfte verwalten"
+                    Command="{Binding OpenNurseManagementCommand}"/>
+            <Button Style="{StaticResource DashboardCardStyle}"
+                    Content="🗄 Daten und Historie"
+                    Command="{Binding OpenHistoryCommand}"/>
+        </UniformGrid>
 
+        <TextBlock DockPanel.Dock="Bottom" Margin="0,30,0,0"
+                   FontSize="12" Foreground="Gray" Text="{Binding Status}"/>
+    </DockPanel>
 
-        <DataGrid ItemsSource="{Binding Schedule.Assignments}" AutoGenerateColumns="False" Visibility="Hidden">
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background"
-                    Value="{Binding NurseId, Converter={StaticResource NurseToColorConverter}}"/>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Nurse" Binding="{Binding NurseId, Converter={StaticResource NurseConverter}}"/>
-                <DataGridTextColumn Header="Day" Binding="{Binding Day, Converter={StaticResource DayConverter}}"/>
-                <DataGridTextColumn Header="Shift" Binding="{Binding Shift, Converter={StaticResource ShiftConverter}}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        
-        <DataGrid ItemsSource="{Binding MonthSchedule}" AutoGenerateColumns="False" Visibility="Hidden">
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background"
-        Value="{Binding NurseId, Converter={StaticResource NurseToColorConverter}}"/>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Tag" Binding="{Binding NurseName}"/>
-                <DataGridTextColumn Header="Früh" Binding="{Binding Days[0]}"/>
-                <DataGridTextColumn Header="Spät" Binding="{Binding Days[1]}"/>
-                <DataGridTextColumn Header="Nacht" Binding="{Binding Days[2]}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
-        <StackPanel>
-            <DockPanel >
-                <Button DockPanel.Dock="Left" Content="◀" Height="30" Click="Button_Click" Padding="4,0"></Button>
-                <Button DockPanel.Dock="Left" Height="30" Content="▶" Click="Button_Click_1" Padding="4,0"></Button>
-                <Button DockPanel.Dock="Right" Content="Tag" Height="30" Width="50"/>
-                <Button DockPanel.Dock="Right" Content="Woche" Height="30" Width="50"/>
-                <Button DockPanel.Dock="Right" Content="Monat" Height="30" Width="50"/>
-                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="{Binding MonthName}" Margin="0,0,0,15"/>
-            </DockPanel>
-            <!-- Wochentage -->
-            <UniformGrid Columns="7">
-                <TextBlock Text="Mo" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Text="Di" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Text="Mi" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Text="Do" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Text="Fr" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Text="Sa" HorizontalAlignment="Center" FontWeight="Bold"/>
-                <TextBlock Text="So" HorizontalAlignment="Center" FontWeight="Bold"/>
-            </UniformGrid>
-
-            <ItemsControl ItemsSource="{Binding Weeks}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <ItemsControl ItemsSource="{Binding}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <UniformGrid Columns="7"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                        <Border.Style>
-                                            <Style TargetType="Border">
-                                                <Setter Property="Background" Value="White"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding IsWeekend}" Value="True">
-                                                        <Setter Property="Background" Value="LightGray"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </Border.Style>
-
-                                        <StackPanel MouseLeftButtonDown="StackPanel_MouseLeftButtonDown">
-                                            
-                                            <TextBlock Text="{Binding Date.Day}" FontWeight="Bold" HorizontalAlignment="Center"/>
-                                            <!-- Frühschicht -->
-                                            <ItemsControl ItemsSource="{Binding Früh}">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal"/>
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Border Width="60" Height="25" Margin="2" CornerRadius="4" MouseLeftButtonDown="Border_MouseLeftButtonDown"
-                                                            Background="{Binding NurseId, Converter={StaticResource NurseToColorConverter}}">
-                                                            <TextBlock Text= "{Binding NurseName}"
-                                                               HorizontalAlignment="Center"
-                                                               VerticalAlignment="Center"/>
-                                                        </Border>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-
-                                            <!-- Spät -->
-                                            <ItemsControl ItemsSource="{Binding Spät}">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal"/>
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Border Width="60" Height="25" Margin="2" CornerRadius="4"
-                                                            Background="{Binding NurseId, Converter={StaticResource NurseToColorConverter}}">
-                                                            <TextBlock Text="{Binding NurseName}"
-                                                               HorizontalAlignment="Center"
-                                                               VerticalAlignment="Center"/>
-                                                        </Border>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-
-                                            <!-- Nacht -->
-                                            <ItemsControl ItemsSource="{Binding Nacht}">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <StackPanel Orientation="Horizontal"/>
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <Border Width="60" Height="25" Margin="2" CornerRadius="4"
-                                                            Background="{Binding NurseId, Converter={StaticResource NurseToColorConverter}}">
-                                                            <TextBlock Text="{Binding NurseName}"
-                                                               HorizontalAlignment="Center"
-                                                               VerticalAlignment="Center"/>
-                                                        </Border>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-
-                                        </StackPanel>
-                                    </Border>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
-
-
-
-
-
-
-    </StackPanel>
 </Window>

@@ -15,48 +15,14 @@
     </Window.Resources>
 
     <StackPanel Margin="10">
-        <Button Content="Schedule berechnen"
-               Command="{Binding CalculateCommand}"
-               Margin="0,0,0,10"/>
+        <TextBlock  HorizontalAlignment="Center" FontSize="30" FontWeight="Bold">Hebamen Schichtplan</TextBlock>
         <StackPanel Orientation="Horizontal">
             <TextBox Width="200"
-Margin="0,0,0,5"
-Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
+                Margin="0,0,0,5"
+                Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
             <ComboBox ItemsSource="{Binding NursesView}"
- DisplayMemberPath="Name"/>
+                DisplayMemberPath="Name"/>
         </StackPanel>
-
-
-        <DataGrid ItemsSource="{Binding Schedule.Assignments}" AutoGenerateColumns="False" Visibility="Hidden">
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background"
-                   Value="{Binding NurseId, Converter={StaticResource NurseToColorConverter}}"/>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Nurse" Binding="{Binding NurseId, Converter={StaticResource NurseConverter}}"/>
-                <DataGridTextColumn Header="Day" Binding="{Binding Day, Converter={StaticResource DayConverter}}"/>
-                <DataGridTextColumn Header="Shift" Binding="{Binding Shift, Converter={StaticResource ShiftConverter}}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
-
-        <DataGrid ItemsSource="{Binding MonthSchedule}" AutoGenerateColumns="False" Visibility="Hidden">
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background"
-       Value="{Binding NurseId, Converter={StaticResource NurseToColorConverter}}"/>
-                </Style>
-            </DataGrid.RowStyle>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Tag" Binding="{Binding NurseName}"/>
-                <DataGridTextColumn Header="Früh" Binding="{Binding Days[0]}"/>
-                <DataGridTextColumn Header="Spät" Binding="{Binding Days[1]}"/>
-                <DataGridTextColumn Header="Nacht" Binding="{Binding Days[2]}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
         <StackPanel>
             <DockPanel >
                 <Button DockPanel.Dock="Left" Content="◀" Height="30" Click="Button_Click" Padding="4,0"></Button>
@@ -64,7 +30,7 @@ Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
                 <Button DockPanel.Dock="Right" Content="Tag" Height="30" Width="50"/>
                 <Button DockPanel.Dock="Right" Content="Woche" Height="30" Width="50"/>
                 <Button DockPanel.Dock="Right" Content="Monat" Height="30" Width="50"/>
-                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="{Binding MonthName}" Margin="0,0,0,15"/>
+                <TextBlock HorizontalAlignment="Center" FontSize="23" FontWeight="Bold" Text="{Binding MonthName}" Margin="0,0,0,15"/>
             </DockPanel>
             <!-- Wochentage -->
             <UniformGrid Columns="7">
@@ -113,7 +79,7 @@ Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
 
                                                 <ItemsControl.ItemTemplate>
                                                     <DataTemplate>
-                                                        <Border Width="60" Height="25" Margin="2" CornerRadius="4" MouseLeftButtonDown="Border_MouseLeftButtonDown"
+                                                        <Border Width="60" Height="25" Margin="2" CornerRadius="4"
                                                            Background="{Binding NurseId, Converter={StaticResource NurseToColorConverter}}">
                                                             <TextBlock Text= "{Binding NurseName}"
                                                               HorizontalAlignment="Center"
@@ -172,7 +138,11 @@ Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </StackPanel>
-
+        <StackPanel>
+            <Button Content="Schedule berechnen"
+       Command="{Binding CalculateCommand}"
+       Margin="0,0,0,10"/>
+        </StackPanel>
 
 
 
