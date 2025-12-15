@@ -1,7 +1,7 @@
 ﻿<Window x:Class="NurseProblem.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Nurse Scheduler" Height="700" Width="1200"
+        Title="Nurse Scheduler" Height="800" Width="1500"
         xmlns:local="clr-namespace:NurseProblem.Converter">
     <Window.Resources>
         <local:NurseToColorConverter x:Key="NurseToColorConverter"/>
@@ -12,16 +12,18 @@
     </Window.Resources>
 
     <StackPanel Margin="10">
-        <StackPanel Orientation="Horizontal">
-            <Button Click="Button_Click_Month">Monatsansicht</Button>
-            <Button>Mitarbeiteransicht</Button>
-            <Button>Schichtansicht</Button>
-        </StackPanel>
         <Button Content="Schedule berechnen"
                 Command="{Binding CalculateCommand}"
                 Margin="0,0,0,10"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="200"
+ Margin="0,0,0,5"
+ Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
+            <ComboBox ItemsSource="{Binding NursesView}"
+  DisplayMemberPath="Name"/>
+        </StackPanel>
 
-        
+
         <DataGrid ItemsSource="{Binding Schedule.Assignments}" AutoGenerateColumns="False" Visibility="Hidden">
             <DataGrid.RowStyle>
                 <Style TargetType="DataGridRow">
@@ -53,6 +55,14 @@
         </DataGrid>
 
         <StackPanel>
+            <DockPanel >
+                <Button DockPanel.Dock="Left" Content="◀" Height="30" Click="Button_Click" Padding="4,0"></Button>
+                <Button DockPanel.Dock="Left" Height="30" Content="▶" Click="Button_Click_1" Padding="4,0"></Button>
+                <Button DockPanel.Dock="Right" Content="Tag" Height="30" Width="50"/>
+                <Button DockPanel.Dock="Right" Content="Woche" Height="30" Width="50"/>
+                <Button DockPanel.Dock="Right" Content="Monat" Height="30" Width="50"/>
+                <TextBlock HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Text="{Binding MonthName}" Margin="0,0,0,15"/>
+            </DockPanel>
             <!-- Wochentage -->
             <UniformGrid Columns="7">
                 <TextBlock Text="Mo" HorizontalAlignment="Center" FontWeight="Bold"/>

@@ -1,5 +1,8 @@
-﻿using NurseProblem.Converter;
-using NurseProblem.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using NurseProblem.Converter;
+using NurseProblem.Datenbank;
+using NurseProblem.Models.DbModelle;
+using NurseProblem.Models.UiModelle;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -31,12 +34,12 @@ namespace NurseProblem.ViewModels
 
         private DaySchedule _day;
 
-        public ObservableCollection<WorkerSlot> FrühWorkerSlots { get; } =
-            new ObservableCollection<WorkerSlot>();
-        public ObservableCollection<WorkerSlot> SpätWorkerSlots { get; } =
-            new ObservableCollection<WorkerSlot>();
-        public ObservableCollection<WorkerSlot> NachtWorkerSlots { get; } =
-            new ObservableCollection<WorkerSlot>();
+        public ObservableCollection<ShiftSlot> FrühWorkerSlots { get; } =
+            new ObservableCollection<ShiftSlot>();
+        public ObservableCollection<ShiftSlot> SpätWorkerSlots { get; } =
+            new ObservableCollection<ShiftSlot>();
+        public ObservableCollection<ShiftSlot> NachtWorkerSlots { get; } =
+            new ObservableCollection<ShiftSlot>();
 
         private int _selectFrühSlotCount;
         private int _selectSpätSlotCount;
@@ -90,12 +93,6 @@ namespace NurseProblem.ViewModels
             Numbers = new ObservableCollection<int>(
                 Enumerable.Range(1, 10)
             );
-
-            // Vorbelegung
-            //FrühSelected = day.Früh[0].SlotNumber;
-            //SpätSelected = GetNurseById(day.Spät);
-            //NachtSelected = GetNurseById(day.Nacht[0].NurseId);
-
             SaveCommand = new RelayCommand(Save);
         }
 
@@ -104,57 +101,61 @@ namespace NurseProblem.ViewModels
             AllNurses = new ObservableCollection<Nurse>();
             foreach (var nurse in Dictionarys.NurseNames)
             {
-                Nurse n = new Nurse(nurse.Key, nurse.Value);
+                Nurse n = new(nurse.Key, nurse.Value);
                 AllNurses.Add(n);
             }
         }
 
-        private Nurse GetNurseById(int? id)
-        {
-            if (id == null) return null;
-            return AllNurses.FirstOrDefault(n => n.Id == id);
-        }
-
         private void Save()
         {
+            using var db = new ScheduleDbContext();
 
-            _day.Früh.Clear();
+            var entity = db.Days
+                .Include(d => d.ShiftSlots)
+                .Single(d => d.Date == _day.Date);
 
-            foreach (var w in FrühWorkerSlots)
-            {
-                _day.Früh.Add(new ShiftSlot
-                {
-                    NurseId = w.SelectedNurse?.Id,
-                    NurseName = w.SelectedNurse?.Name
-                });
-            }
-            if (Application.Current.Windows.OfType<DayWindow>()
-                .FirstOrDefault(w => w.DataContext == this) is DayWindow win)
-            {
-                win.DialogResult = true;
-                win.Close();
-            }
-            //_day.Früh = FrühSelected;
-            //_day.SpätNurseId = SpätSelected?.Id;
-            //_day.NachtNurseId = NachtSelected?.Id;
+            SaveShift(db, entity, ShiftType.Früh, _day.Früh);
+            SaveShift(db, entity, ShiftType.Spät, _day.Spät);
+            SaveShift(db, entity, ShiftType.Nacht, _day.Nacht);
 
-            //_day.FrühName = FrühSelected?.Name;
-            //_day.SpätName = SpätSelected?.Name;
-            //_day.NachtName = NachtSelected?.Name;
-
-            //DialogResult = true;
+            db.SaveChanges();
         }
 
+        private void SaveShift(ScheduleDbContext context, DayEntity dayEntity, ShiftType shift, ObservableCollection<ShiftSlot> slots)
+        {
+            foreach (var slot in slots)
+            {
+                var entity = dayEntity.ShiftSlots
+            .FirstOrDefault(s =>
+                s.Shift == shift &&
+                s.SlotNumber == slot.SlotNumber);
+
+                if (entity == null)
+                {
+                    entity = new ShiftSlotEntity
+                    {
+                        Shift = shift,
+                        SlotNumber = slot.SlotNumber,
+                        Day = dayEntity
+                    };
+
+                    dayEntity.ShiftSlots.Add(entity);
+                }
+
+                entity.NurseId = slot.NurseId;
+                entity.NurseName = slot.NurseName;
+            }
+        }
 
         // --- Dynamisch erzeugte Slots ---
        
-        private void UpdateWorkerSlots(int count, ObservableCollection<WorkerSlot> workerSlots)
+        private void UpdateWorkerSlots(int count, ObservableCollection<ShiftSlot> workerSlots)
         {
             workerSlots.Clear();
 
             for (int i = 1; i <= count; i++)
             {
-                workerSlots.Add(new WorkerSlot
+                workerSlots.Add(new ShiftSlot
                 {
                     SlotNumber = i
                 });

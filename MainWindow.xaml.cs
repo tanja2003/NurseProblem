@@ -1,6 +1,6 @@
 ﻿using Google.OrTools.Sat;
 using NurseProblem.Converter;
-using NurseProblem.Models;
+using NurseProblem.Models.UiModelle;
 using NurseProblem.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -59,10 +59,8 @@ namespace NurseProblem
         {
             if (sender is StackPanel sp && sp.DataContext is DaySchedule day)
             {
-                // WICHTIG: NICHT neues ViewModel erzeugen!
                 var win = new DayWindow(new DayCalenderViewModel(day));
 
-                // Fenster MODAL öffnen
                 if (win.ShowDialog() == true)
                 {
                     // kein extra Speichern nötig → gleiche Instance von "day" wurde bearbeitet
@@ -70,32 +68,14 @@ namespace NurseProblem
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
-        //public void GenerateColumnsForDays(int numDays)
-        //{
-        //    MonthDataGrid.Columns.Clear();
+        }
 
-        //    // Erste Spalte: Nurse Name
-        //    MonthDataGrid.Columns.Add(new DataGridTextColumn
-        //    {
-        //        Header = "Nurse",
-        //        Binding = new Binding("NurseName")
-        //    });
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
 
-        //    // Dynamische Tages-Spalten
-        //    for (int day = 0; day < numDays; day++)
-        //    {
-        //        MonthDataGrid.Columns.Add(new DataGridTextColumn
-        //        {
-        //            Header = $"Tag {day + 1}",
-        //            Binding = new Binding($"Days[{day}]") // Zugriff auf Array-Index
-        //        });
-        //    }
-        //}
-
-
+        }
     }
-
-
-
 }

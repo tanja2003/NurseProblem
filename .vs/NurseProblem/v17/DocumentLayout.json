@@ -3,51 +3,56 @@
   "WorkspaceRootPath": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\viewmodels\\daycalenderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:viewmodels\\daycalenderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\viewmodels\\calenderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:viewmodels\\calenderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\models\\shiftdayschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:models\\shiftdayschedule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\calenderwindwow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:calenderwindwow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\calenderwindwow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:calenderwindwow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\models\\nurse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:models\\nurse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\viewmodels\\calenderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:viewmodels\\calenderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\tanja\\AppData\\Local\\SourceServer\\399b4ff9183eb14291875f0bde2c67a4b2034d115417e4d364da317c4241abe8\\ViewModels\\DayCalenderViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\models\\dbmodelle\\dayentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:models\\dbmodelle\\dayentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\daywindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:daywindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\datenbank\\scheduledbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:datenbank\\scheduledbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\daywindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:daywindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\models\\uimodelle\\shiftslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:models\\uimodelle\\shiftslot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\nursescheduleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:nursescheduleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\viewmodels\\daycalenderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:viewmodels\\daycalenderviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\services\\cpsatschedulerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:services\\cpsatschedulerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\converter\\nursetocolorconverter .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:converter\\nursetocolorconverter .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\daywindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:daywindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\models\\uimodelle\\nurse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:models\\uimodelle\\nurse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|c:\\users\\tanja\\eigene projekte\\wpf\\nurseproblem\\models\\dbmodelle\\nurseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D68117D3-4669-48CD-89E2-46F4F516B0AD}|NurseProblem.csproj|solutionrelative:models\\dbmodelle\\nurseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -57,7 +62,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -65,154 +70,162 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DayWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\DayWindow.xaml",
-              "RelativeDocumentMoniker": "DayWindow.xaml",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\DayWindow.xaml",
-              "RelativeToolTip": "DayWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-10T11:42:58.846Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\MainWindow.xaml.cs",
-              "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAApwDwAAAAEAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "CalenderWindwow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\CalenderWindwow.xaml.cs",
+              "RelativeDocumentMoniker": "CalenderWindwow.xaml.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\CalenderWindwow.xaml.cs",
+              "RelativeToolTip": "CalenderWindwow.xaml.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAABoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-02T21:11:31.612Z",
+              "WhenOpened": "2025-12-15T13:54:08.352Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "ShiftDaySchedule.cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\ShiftDaySchedule.cs",
-              "RelativeDocumentMoniker": "Models\\ShiftDaySchedule.cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\ShiftDaySchedule.cs",
-              "RelativeToolTip": "Models\\ShiftDaySchedule.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAywCYAAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T11:38:39.885Z",
+              "Title": "CalenderWindwow.xaml",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\CalenderWindwow.xaml",
+              "RelativeDocumentMoniker": "CalenderWindwow.xaml",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\CalenderWindwow.xaml",
+              "RelativeToolTip": "CalenderWindwow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-15T13:51:39.391Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 10,
+              "Title": "DayWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\DayWindow.xaml.cs",
+              "RelativeDocumentMoniker": "DayWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\DayWindow.xaml.cs",
+              "RelativeToolTip": "DayWindow.xaml.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T14:52:19.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CpSatSchedulerService.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Services\\CpSatSchedulerService.cs",
+              "RelativeDocumentMoniker": "Services\\CpSatSchedulerService.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Services\\CpSatSchedulerService.cs",
+              "RelativeToolTip": "Services\\CpSatSchedulerService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAA3wCAAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T11:06:29.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "CalenderViewModel.cs",
               "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\ViewModels\\CalenderViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\CalenderViewModel.cs",
               "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\ViewModels\\CalenderViewModel.cs",
               "RelativeToolTip": "ViewModels\\CalenderViewModel.cs",
-              "ViewState": "AgIAAGoAAAAAAAAAAAAowBUAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAowFEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-07T11:05:30.827Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DayCalenderViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\ViewModels\\DayCalenderViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModels\\DayCalenderViewModel.cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\ViewModels\\DayCalenderViewModel.cs",
-              "RelativeToolTip": "ViewModels\\DayCalenderViewModel.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAmwIIAAAAMAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\MainWindow.xaml.cs",
+              "RelativeToolTip": "MainWindow.xaml.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAUwCAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T13:31:54.842Z",
+              "WhenOpened": "2025-12-02T21:11:31.612Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Nurse.cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\Nurse.cs",
-              "RelativeDocumentMoniker": "Models\\Nurse.cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\Nurse.cs",
-              "RelativeToolTip": "Models\\Nurse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T07:46:16.357Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-02T21:11:41.8Z",
+              "WhenOpened": "2025-12-14T19:39:41.089Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "DayWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\DayWindow.xaml.cs",
-              "RelativeDocumentMoniker": "DayWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\DayWindow.xaml.cs",
-              "RelativeToolTip": "DayWindow.xaml.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAAwBcAAAAtAAAAAAAAAA==",
+              "Title": "DayCalenderViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\ViewModels\\DayCalenderViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModels\\DayCalenderViewModel.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\ViewModels\\DayCalenderViewModel.cs",
+              "RelativeToolTip": "ViewModels\\DayCalenderViewModel.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAA/wJQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T11:49:14.189Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-10T13:31:54.842Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "DayCalenderViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\AppData\\Local\\SourceServer\\399b4ff9183eb14291875f0bde2c67a4b2034d115417e4d364da317c4241abe8\\ViewModels\\DayCalenderViewModel.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\SourceServer\\399b4ff9183eb14291875f0bde2c67a4b2034d115417e4d364da317c4241abe8\\ViewModels\\DayCalenderViewModel.cs",
-              "ToolTip": "C:\\Users\\tanja\\AppData\\Local\\SourceServer\\399b4ff9183eb14291875f0bde2c67a4b2034d115417e4d364da317c4241abe8\\ViewModels\\DayCalenderViewModel.cs [Schreibgesch\u00FCtzt]",
-              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\SourceServer\\399b4ff9183eb14291875f0bde2c67a4b2034d115417e4d364da317c4241abe8\\ViewModels\\DayCalenderViewModel.cs [Schreibgesch\u00FCtzt]",
-              "ViewState": "AgIAACcAAAAAAAAAAAAqwAAAAAAAAAAAAQAAAA==",
+              "Title": "ScheduleDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Datenbank\\ScheduleDbContext.cs",
+              "RelativeDocumentMoniker": "Datenbank\\ScheduleDbContext.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Datenbank\\ScheduleDbContext.cs",
+              "RelativeToolTip": "Datenbank\\ScheduleDbContext.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAuwA8AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T11:40:27.978Z",
-              "EditorCaption": " [Schreibgesch\u00FCtzt]"
+              "WhenOpened": "2025-12-12T09:46:07.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DayEntity.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\DbModelle\\DayEntity.cs",
+              "RelativeDocumentMoniker": "Models\\DbModelle\\DayEntity.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\DbModelle\\DayEntity.cs",
+              "RelativeToolTip": "Models\\DbModelle\\DayEntity.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAmwAwAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T09:31:57.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ShiftSlot.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\UiModelle\\ShiftSlot.cs",
+              "RelativeDocumentMoniker": "Models\\UiModelle\\ShiftSlot.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\UiModelle\\ShiftSlot.cs",
+              "RelativeToolTip": "Models\\UiModelle\\ShiftSlot.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-14T09:48:20.399Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NurseEntity.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\DbModelle\\NurseEntity.cs",
+              "RelativeDocumentMoniker": "Models\\DbModelle\\NurseEntity.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\DbModelle\\NurseEntity.cs",
+              "RelativeToolTip": "Models\\DbModelle\\NurseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-12T08:59:08.184Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "NurseToColorConverter .cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Converter\\NurseToColorConverter .cs",
-              "RelativeDocumentMoniker": "Converter\\NurseToColorConverter .cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Converter\\NurseToColorConverter .cs",
-              "RelativeToolTip": "Converter\\NurseToColorConverter .cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAApwCAAAAA3AAAAAAAAAA==",
+              "Title": "Nurse.cs",
+              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\UiModelle\\Nurse.cs",
+              "RelativeDocumentMoniker": "Models\\UiModelle\\Nurse.cs",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Models\\UiModelle\\Nurse.cs",
+              "RelativeToolTip": "Models\\UiModelle\\Nurse.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAIAwwBIAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T10:30:30.13Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "NurseScheduleViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\NurseScheduleViewModel.cs",
-              "RelativeDocumentMoniker": "NurseScheduleViewModel.cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\NurseScheduleViewModel.cs",
-              "RelativeToolTip": "NurseScheduleViewModel.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAYwBYAAAAPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T07:46:12.735Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CpSatSchedulerService.cs",
-              "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Services\\CpSatSchedulerService.cs",
-              "RelativeDocumentMoniker": "Services\\CpSatSchedulerService.cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem\\Services\\CpSatSchedulerService.cs",
-              "RelativeToolTip": "Services\\CpSatSchedulerService.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAxwCAAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-10T11:06:29.638Z"
+              "WhenOpened": "2025-12-11T07:46:16.357Z"
             }
           ]
         }
