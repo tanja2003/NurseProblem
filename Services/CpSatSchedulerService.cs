@@ -23,15 +23,35 @@ namespace NurseProblem.Services
         public int[] AllShifts => Enumerable.Range(0, NumShifts).ToArray();
         public int[] AllWorkerSlot => Enumerable.Range(0, NumWorkerSlot).ToArray();
 
+        private List<(int, int)> weekendDays = new List<(int sat, int sun)>();
 
-        public CpSatSchedulerService(int numNurses, int numDays, int numShifts)
+        public CpSatSchedulerService(int numNurses, int numDays, int numShifts, int year, int month)
         {
             // 1. data
             NumNurses = numNurses;
             NumDays = numDays;
             NumShifts = numShifts;
-            NumWorkerSlot = 3;
+            NumWorkerSlot = 1;
+            CalculateWeekendDays(year, month);
         }
+
+        private void CalculateWeekendDays(int year, int month)
+        {
+            var start = new DateTime(year, month, 1);
+            var end = start.AddMonths(1);
+            
+            for (int d = 1; d <= DateTime.DaysInMonth(year, month); d++)
+            {
+                var day = new DateTime(year, month, d);
+                if ( day.DayOfWeek == DayOfWeek.Saturday)
+                {
+                    int saturday = d - 1;
+                    int sunday = d < DateTime.DaysInMonth(year, month) ? d : -1;
+                    weekendDays.Add((saturday, sunday));
+                }
+            }
+        }
+
         public Schedule Solve()
         {
             // 2. declare Model
@@ -128,6 +148,29 @@ namespace NurseProblem.Services
                 // min ≤ Σ shifts[n,d,s] ≤ max
                 model.AddLinearConstraint(LinearExpr.Sum(shiftsWorkedByNurse), minShiftsPerNurse, maxShiftsPerNurse);
             }
+
+            // 4.4  Each Nurse works at max number on Weekends in Month
+            //      Min  1 shift on Sa or So --> Weekend is marked as "worked"
+            //      If Nurse Works on Sa, So or both the count of worked weekend is +1
+
+            foreach(int n in AllNurses)
+            {
+                var weekendAssignment = new List<BoolVar>();
+                foreach (var (sat,sun) in weekendDays)
+                {
+                    var satShifts = AllWorkerSlot.SelectMany(w => AllShifts.Select(s => shifts[(n, sat, w, s)])).ToList();
+                    var sunShifts = sun >= 0 ? AllWorkerSlot.SelectMany(w => AllShifts.Select(s => shifts[(n, sun, w, s)])).ToList() : new List<BoolVar>();
+
+                    var weekendWorked = model.NewBoolVar($"N{n}_Weekend_{sat}");
+                    model.AddMaxEquality(weekendWorked, satShifts.Concat(sunShifts).ToArray());
+                    weekendAssignment.Add(weekendWorked);
+                }
+                model.Add(LinearExpr.Sum(weekendAssignment) <= 2);
+                
+            }
+
+            // Each Nurse works at max Number on Weekend in Month
+
 
             // 5. solve model
             CpSolver solver = new CpSolver();

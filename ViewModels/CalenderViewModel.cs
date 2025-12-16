@@ -34,7 +34,7 @@ namespace NurseProblem.ViewModels
 
         public CalendarViewModel()
         {
-            _service = new CpSatSchedulerService(10, 30, 3);  // TODO start Window to enter the infos
+            _service = new CpSatSchedulerService(10, 30, 3, 2025, 1);  // TODO start Window to enter the infos
 
             CalculateCommand = new RelayCommand(Calculate);
             LoadOrCreateMonth(2026, 1);  // TODO

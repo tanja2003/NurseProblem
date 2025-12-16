@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NurseProblem.Models.UiModelle;
+using NurseProblem.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,19 @@ namespace NurseProblem
         public CalculateScheduleWindow()
         {
             InitializeComponent();
+        }
+
+        private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is StackPanel sp && sp.DataContext is DaySchedule day)
+            {
+                var win = new DayWindow(new DayCalenderViewModel(day));
+
+                if (win.ShowDialog() == true)
+                {
+                    // kein extra Speichern nötig → gleiche Instance von "day" wurde bearbeitet
+                }
+            }
         }
     }
 }

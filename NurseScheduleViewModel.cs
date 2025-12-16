@@ -24,7 +24,7 @@ namespace NurseProblem
         public NurseScheduleViewModel()
         {
             // Beispiel: 6 Nurses, 10 Tage, 3 Schichten
-            _service = new CpSatSchedulerService(4, 4, 3);
+            _service = new CpSatSchedulerService(4, 4, 3, 2025, 1);
 
             CalculateCommand = new RelayCommand(Calculate);
 
