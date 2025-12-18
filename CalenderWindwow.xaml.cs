@@ -24,7 +24,7 @@ namespace NurseProblem
         public CalenderWindwow()
         {
             InitializeComponent();
-            DataContext = new CalendarViewModel();
+            // DataContext = new CalendarViewModel();
         }
 
         private void StackPanel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

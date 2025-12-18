@@ -31,7 +31,7 @@ namespace NurseProblem.Services
             NumNurses = numNurses;
             NumDays = numDays;
             NumShifts = numShifts;
-            NumWorkerSlot = 1;
+            NumWorkerSlot = 2;  //TODO
             CalculateWeekendDays(year, month);
         }
 
@@ -153,10 +153,10 @@ namespace NurseProblem.Services
             //      Min  1 shift on Sa or So --> Weekend is marked as "worked"
             //      If Nurse Works on Sa, So or both the count of worked weekend is +1
 
-            foreach(int n in AllNurses)
+            foreach (int n in AllNurses)
             {
                 var weekendAssignment = new List<BoolVar>();
-                foreach (var (sat,sun) in weekendDays)
+                foreach (var (sat, sun) in weekendDays)
                 {
                     var satShifts = AllWorkerSlot.SelectMany(w => AllShifts.Select(s => shifts[(n, sat, w, s)])).ToList();
                     var sunShifts = sun >= 0 ? AllWorkerSlot.SelectMany(w => AllShifts.Select(s => shifts[(n, sun, w, s)])).ToList() : new List<BoolVar>();
@@ -166,7 +166,7 @@ namespace NurseProblem.Services
                     weekendAssignment.Add(weekendWorked);
                 }
                 model.Add(LinearExpr.Sum(weekendAssignment) <= 2);
-                
+
             }
 
             // Each Nurse works at max Number on Weekend in Month

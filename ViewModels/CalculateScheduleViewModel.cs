@@ -1,4 +1,5 @@
-﻿using NurseProblem.Converter;
+﻿using Microsoft.EntityFrameworkCore;
+using NurseProblem.Converter;
 using NurseProblem.Datenbank;
 using NurseProblem.Models.DbModelle;
 using NurseProblem.Models.SolverModelle;
@@ -8,12 +9,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Microsoft.EntityFrameworkCore;
 namespace NurseProblem.ViewModels
 {
     public class CalculateScheduleViewModel: INotifyPropertyChanged
@@ -25,6 +27,7 @@ namespace NurseProblem.ViewModels
         public ICommand SaveCommand { get; }
         public Schedule Schedule { get; private set; } = new();
 
+        private int _month; 
         private bool _isCalendarVisible;
         public bool IsCalendarVisible
         {
@@ -40,8 +43,8 @@ namespace NurseProblem.ViewModels
 
         public CalculateScheduleViewModel()
         {
-            _service = new CpSatSchedulerService(10, 30, 3, 2025, 1);  // TODO start Window to enter the infos
-
+            _month = 1;
+            _service = new CpSatSchedulerService(25, 28, 3, 2025, _month);  // TODO start Window to enter the infos
             CalculateCommand = new RelayCommand(Calculate);
             SaveCommand = new RelayCommand(SaveMonthSchedule);
         }
@@ -52,7 +55,7 @@ namespace NurseProblem.ViewModels
             Schedule = _service.Solve();
 
             OnPropertyChanged(nameof(Schedule));
-            BuildMonthSchedule(2025, 1);
+            BuildMonthSchedule(2025, _month);
         }
 
         // On CLick on Button "Save MonthSchedule"
@@ -73,7 +76,7 @@ namespace NurseProblem.ViewModels
             // initalize all days
             for (int d = 1; d <= daysInMonth; d++)
             {
-                Days.Add(new DaySchedule(3)  // TODO: Dynamiclly
+                Days.Add(new DaySchedule(2)  // TODO: Dynamiclly
                 {
                     Date = new DateTime(year, month, d),
                 });
@@ -156,7 +159,7 @@ namespace NurseProblem.ViewModels
                 {
                     context.Days.Add(new DayEntity
                     {
-                        Date = day.Date
+                        Date = day.Date,
                     });
                 }
             }
@@ -193,16 +196,16 @@ namespace NurseProblem.ViewModels
             if (slot == null)
                 throw new InvalidOperationException("Slot konnte nicht erstellt werden");
 
-            var dayEntity = context.Days
-                .Include(d => d.ShiftSlots)
-                .SingleOrDefault(d => d.Date == date);
+            var dayEntity = context.Days  // from days d
+                .Include(d => d.ShiftSlots)  // left join ShiftSlots s on s.dayEntityId = d.id
+                .SingleOrDefault(d => d.Date == date); // order by date
 
             if (dayEntity == null)
             {
                 dayEntity = new DayEntity
                 {
                     Date = date,
-                    ShiftSlots = new List<ShiftSlotEntity>()
+                    // ShiftSlot must be added with slotEntity
                 };
 
                 context.Days.Add(dayEntity);
@@ -218,6 +221,7 @@ namespace NurseProblem.ViewModels
             {
                 slotEntity = new ShiftSlotEntity
                 {
+                    DayEntityId = dayEntity.Id, // important to store also in Day Table
                     Day = dayEntity,
                     Shift = shift,
                     SlotNumber = slot.SlotNumber,
@@ -226,6 +230,10 @@ namespace NurseProblem.ViewModels
             }
             slotEntity.NurseId = slot.NurseId;
             slotEntity.NurseName = slot.NurseName;
+
+            context.SaveChanges();
+            var fullPath = Path.GetFullPath(context.Database.GetDbConnection().DataSource);
+            Debug.WriteLine(fullPath);
         }
 
 

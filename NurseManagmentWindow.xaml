@@ -5,9 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NurseProblem"
         mc:Ignorable="d"
-        Title="NurseManagmentWindow" Height="450" Width="800">
+        Title="NurseManagmentWindow" Height="450" Width="500">
     <Grid>
-        <TextBlock Text="Nurse Managment"/>
-        <TextBlock Text="Nurse Managment"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Nurses}">
+            <ListView.View>
+                <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Alle Hebammen">
+                    <GridViewColumn Header="First Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Hebammen Nummer" Width="100" DisplayMemberBinding="{Binding Id}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBlock Grid.Row="1" Text="Neue Hebamme hinzufugen" Margin="25,10,10,10" FontSize="15"/>
+        <TextBox Grid.Row="2" Text="{Binding Nurses}"  HorizontalAlignment="Left" Style="{StaticResource TextboCardStyle }"/>
     </Grid>
 </Window>

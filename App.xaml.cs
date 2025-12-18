@@ -15,11 +15,8 @@ namespace NurseProblem
         {
             base.OnStartup(e);
 
-            // Migration / DB-Erstellung beim Start
-            using (var context = new ScheduleDbContext())
-            {
-                context.Database.EnsureCreated();
-            }
+            using var db = new ScheduleDbContext();
+            db.Database.EnsureCreated();
         }
     }
 }

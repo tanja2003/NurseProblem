@@ -29,7 +29,13 @@ namespace NurseProblem.Datenbank
                 .HasMany(d => d.ShiftSlots)
                 .WithOne(s => s.Day)
                 .HasForeignKey(s => s.DayEntityId);
-        }
+            modelBuilder.Entity<ShiftSlotEntity>()
+                .HasOne(s => s.Day)
+                .WithMany(d => d.ShiftSlots)
+                .HasForeignKey(s => s.DayEntityId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+             }
     }
 
 }

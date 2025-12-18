@@ -19,6 +19,7 @@ namespace NurseProblem
     /// </summary>
     public partial class NurseManagmentWindow : Window
     {
+
         public NurseManagmentWindow()
         {
             InitializeComponent();
