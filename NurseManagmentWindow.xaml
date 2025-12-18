@@ -3,25 +3,52 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:NurseProblem"
         mc:Ignorable="d"
-        Title="NurseManagmentWindow" Height="450" Width="500">
+        Title="NurseManagmentWindow" Height="400" Width="400">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition />
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding Nurses}">
-            <ListView.View>
-                <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Alle Hebammen">
-                    <GridViewColumn Header="First Name" Width="100" DisplayMemberBinding="{Binding Name}"/>
-                    <GridViewColumn Header="Hebammen Nummer" Width="100" DisplayMemberBinding="{Binding Id}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <TextBlock Grid.Row="1" Text="Neue Hebamme hinzufugen" Margin="25,10,10,10" FontSize="15"/>
-        <TextBox Grid.Row="2" Text="{Binding Nurses}"  HorizontalAlignment="Left" Style="{StaticResource TextboCardStyle }"/>
+        <Border Margin="0,20" Padding="5" CornerRadius="10" Background="White" BorderBrush="#DDD" BorderThickness="1" Width="320">
+            <ListView ItemsSource="{Binding Nurses}" SelectedItem="{Binding SelectedNurse}" BorderThickness="0" Background="Transparent">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding OpenNurseDetailsCommand}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <ListView.View>
+                    <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Alle Hebammen">
+                        <GridViewColumn Header="First Name" Width="100" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header=" Nummer" Width="100" DisplayMemberBinding="{Binding Id}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Border>
+        
+        
+        <Border Grid.Row="1" Margin="0,20" Padding="20" CornerRadius="10" Background="White" BorderBrush="#DDD" BorderThickness="1" Width="320">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Neue Hebamme" FontSize="16" FontWeight="SemiBold"  Margin="0,0,0,15"/>
+                <StackPanel Grid.Row="1" Margin="0,0,0,20">
+                    <TextBlock Text="Name" FontSize="11" Foreground="Gray" Margin="0,0,0,4"/>
+                    <TextBox Text="{Binding NurseName, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource TextboCardStyle}"/>
+                </StackPanel>
+                <Button Grid.Row="2" Content="Abbrechen" Command="{Binding CancelCommand}" Width="70" Style="{StaticResource ButtonCardStyle}"
+                Foreground="Red" BorderBrush="Red" HorizontalAlignment="Left"/>
+                <Button Grid.Row="2" Content="Speichern" Width="60" HorizontalAlignment="Right" Command="{Binding SaveCommand}" Style="{StaticResource ButtonCardStyle}"/>
+            </Grid>
+        </Border>
+
     </Grid>
 </Window>

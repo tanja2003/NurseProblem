@@ -552,3 +552,6 @@ C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseP
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseProblem.genruntimeconfig.cache
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\ref\NurseProblem.dll
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\Dictionary3.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseDetailWindow.g.cs
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseDetailWindow.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll

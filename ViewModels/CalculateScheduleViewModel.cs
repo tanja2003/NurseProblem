@@ -46,7 +46,7 @@ namespace NurseProblem.ViewModels
             _month = 1;
             _service = new CpSatSchedulerService(25, 28, 3, 2025, _month);  // TODO start Window to enter the infos
             CalculateCommand = new RelayCommand(Calculate);
-            SaveCommand = new RelayCommand(SaveMonthSchedule);
+            SaveCommand = new RelayCommand(SaveMonthToDb);
         }
 
         // On Click on Button "Schedule berechnen"
@@ -56,12 +56,6 @@ namespace NurseProblem.ViewModels
 
             OnPropertyChanged(nameof(Schedule));
             BuildMonthSchedule(2025, _month);
-        }
-
-        // On CLick on Button "Save MonthSchedule"
-        private void SaveMonthSchedule()
-        {
-            SaveMonthToDb();
         }
 
         public void BuildMonthSchedule(int year, int month)
@@ -149,6 +143,7 @@ namespace NurseProblem.ViewModels
 
         }
 
+        // On CLick on Button "Save MonthSchedule"
         private void SaveMonthToDb()
         {
             using var context = new ScheduleDbContext();
