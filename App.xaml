@@ -6,9 +6,12 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/Dictionary2.xaml"/>
-                <ResourceDictionary Source="/Styles/Dictionary1.xaml"/>
-                <ResourceDictionary Source="/Styles/Dictionary3.xaml"/>
+                <ResourceDictionary Source="/Styles/DashboardCardStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/TextboxCardStyle.xaml"/>
+                <ResourceDictionary Source="/Styles/Border.xaml"/>
+                <ResourceDictionary Source="/Styles/TextBoxErrorStyle.xaml"/>
+                <ResourceDictionary Source="/Themes/Dark.xaml"/>
+                <ResourceDictionary Source="/Themes/Light.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -1,11 +1,16 @@
-﻿using NurseProblem.Converter;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using NurseProblem.Converter;
 using NurseProblem.Datenbank;
+using NurseProblem.Models;
 using NurseProblem.Models.DbModelle;
 using NurseProblem.Models.UiModelle;
+using NurseProblem.Services.Interfaces;
+using NurseProblem.Styles;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -16,41 +21,56 @@ namespace NurseProblem.ViewModels
 {
     public class NurseManagementViewModel: INotifyPropertyChanged
     {
-        public ObservableCollection<Nurse> Nurses { get; set; } = [];
-        public int Id { get; set; } = new();
-        private string _nurseName;
-        public string NurseName
+        private ObservableCollection<Nurse> _filteredNurses; 
+        public ObservableCollection<Nurse> FilteredNurses
         {
-            get => _nurseName;
-            set
-            {
-                if (_nurseName != value)
-                {
-                    _nurseName = value;
-                    OnPropertyChanged(nameof(NurseName));
-                }
-            }
+            get => _filteredNurses;
+            set { _filteredNurses = value; OnPropertyChanged(); }
         }
+        public ObservableCollection<Nurse> Nurses { get; } = [];
+        public int Id { get; set; } = new();
+
 
         private Nurse? _selectedNurse;
         public Nurse? SelectedNurse
         {
             get => _selectedNurse;
-            set
-            {
-                _selectedNurse = value;
-                OnPropertyChanged();
-            }
+            set { _selectedNurse = value; OnPropertyChanged(); }
         }
+
+        private string _searchText;
+        public string SearchText
+        {
+            get => _searchText;
+            set { _searchText = value; OnPropertyChanged(); ApplyFilter(); }
+        }
+
+        private bool _isDarkMode;
+        public bool IsDarkMode
+        {
+            get => _isDarkMode;
+            set {  _isDarkMode = value; OnPropertyChanged(); ThemeManager.Apply(value); }
+        }
+
+
+
 
         public ICommand OpenNurseDetailsCommand { get; }
         public ICommand SaveCommand { get; }
+        public ICommand OpenNewNurseCommand { get; }
 
-        public NurseManagementViewModel() {
-            OpenNurseDetailsCommand = new RelayCommand(OpenNurseDetails);
-            SaveCommand = new RelayCommand(SaveNurseToDb);
 
+        public NurseManagementViewModel() 
+        {
             Nurses = new ObservableCollection<Nurse>();
+
+            OpenNurseDetailsCommand = new RelayCommand(OpenNurseDetails);
+            // SaveCommand = new RelayCommand(SaveNurseToDb);
+            OpenNewNurseCommand = new RelayCommand(OpenNewNurse);
+            WeakReferenceMessenger.Default.Register<NurseSavedMessage>(this, (r, m) =>
+            {
+                Nurses.Add(m.Nurse);
+            });
             ListNurses();
         }
         private void ListNurses()
@@ -64,11 +84,17 @@ namespace NurseProblem.ViewModels
                 {
                     var NewNurse = new Nurse()
                     {
-                        Name = nurseEntity.Name
+                        FirstName = nurseEntity.FirstName,
+                        LastName = nurseEntity.LastName,
+                        WorkingHours = nurseEntity.WorkingHours,
+                        UnavailableDays = nurseEntity.UnavailableDays,
+                        EmploymentStatus = nurseEntity.EmploymentStatus,
+                        Id = nurseEntity.Id
                     };
                     Nurses.Add(NewNurse);
                 }
             }
+            FilteredNurses = Nurses;
             //var nurse2 = Dictionarys.NurseNames;
 
             //foreach (var nurse in nurse2)
@@ -88,20 +114,56 @@ namespace NurseProblem.ViewModels
             using var context = new ScheduleDbContext();
             context.Nurses.Add(new NurseEntity
             {
-                Name = NurseName
+                FirstName = nameof(Nurse),
             });
             context.SaveChanges();
         }
         private void OpenNurseDetails()
         {
+
             var vm = new NurseDetailViewModel(SelectedNurse!);
             var window = new NurseDetailWindow
             {
                 DataContext = vm
             };
-            window.ShowDialog(); // modal → ideal für Bearbeiten/Löschen
+            window.ShowDialog(); 
         }
 
+        private void OpenNewNurse()
+        {
+            var wm = new NewNurseViewModel();
+            var window = new NewNurseWindow
+            {
+                DataContext = wm
+            };
+            window.ShowDialog();
+        }
+
+
+        private void ApplyFilter()
+        {
+            if (string.IsNullOrWhiteSpace(SearchText))
+            {
+                FilteredNurses = new ObservableCollection<Nurse>(Nurses);
+            }
+            else
+            {
+                var lower = SearchText.ToLower();
+                FilteredNurses = new ObservableCollection<Nurse>();
+                foreach (var nurse in Nurses)
+                {
+                    Debug.Assert(nurse != null, "Nurse has no values!");
+                    if ( nurse.FirstName != null && nurse.LastName != null)
+                    {
+                        if (nurse.FirstName.ToLower().Contains(lower) || nurse.LastName.ToLower().Contains(lower))
+                        {
+                            FilteredNurses.Add(nurse);
+                        }
+                    }
+
+                }
+            }
+        }
 
 
         public event PropertyChangedEventHandler? PropertyChanged;

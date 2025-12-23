@@ -1,6 +1,4 @@
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseProblem.csproj.AssemblyReference.cache
-C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\Dictionary1.baml
-C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\Dictionary2.baml
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\CalenderWindwow.g.cs
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\DayWindow.g.cs
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\HistoryWindow.g.cs
@@ -551,7 +549,15 @@ C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\refint
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseProblem.pdb
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseProblem.genruntimeconfig.cache
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\ref\NurseProblem.dll
-C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\Dictionary3.baml
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseDetailWindow.g.cs
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NurseDetailWindow.baml
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\Border.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NewNurseWindow.g.cs
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NewNurseWindow.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\DashboardCardStyle.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\TextboxCardStyle.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\TextBoxErrorStyle.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Themes\Dark.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Themes\Light.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll

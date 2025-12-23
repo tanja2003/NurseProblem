@@ -19,7 +19,7 @@ namespace NurseProblem.Models.UiModelle
             {
                 _selectedNurse = value;
                 NurseId = value?.Id;
-                NurseName = value?.Name;
+                NurseName = value?.LastName;
             }
         }
         private Nurse? _selectedNurse;

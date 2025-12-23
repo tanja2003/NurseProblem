@@ -34,8 +34,8 @@ namespace NurseProblem.Datenbank
                 .WithMany(d => d.ShiftSlots)
                 .HasForeignKey(s => s.DayEntityId)
                 .OnDelete(DeleteBehavior.Cascade);
-
-             }
+            modelBuilder.ApplyConfiguration(new NurseEntityConfiguration());
+        }
     }
 
 }

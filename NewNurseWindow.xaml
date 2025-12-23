@@ -1,0 +1,96 @@
+﻿<Window x:Class="NurseProblem.NewNurseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NurseProblem"
+        xmlns:conv="clr-namespace:NurseProblem.Converter"
+        mc:Ignorable="d"
+        Title="NewNurseWindow" Height="450" Width="400"
+        >
+    
+    <StackPanel Margin="20">
+        <TextBlock Text="Neue Hebame hinzufügen" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+        <TextBlock Text="*Vorname:" FontSize="12" FontWeight="SemiBold" />
+        <TextBox x:Name="FirstNameBox" Text="{Binding Nurse.FirstName,  UpdateSourceTrigger=PropertyChanged,  
+            ValidatesOnDataErrors=True,  NotifyOnValidationError=True}"  Margin="0,3,0,0"/>
+        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding Nurse[FirstName]}">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Nurse.ValidateOnSubmit}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+
+        <TextBlock Text="*Nachname ändern:" FontSize="12" FontWeight="SemiBold"/>
+        <TextBox Text="{Binding Nurse.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
+        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding Nurse[LastName]}">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Nurse.ValidateOnSubmit}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Text="*Anzahl Stunden pro Woche: " FontSize="12" FontWeight="SemiBold"/>
+        <TextBox Text="{Binding Nurse.WorkingHours, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
+        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding Nurse[WorkingHours]}">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Nurse.ValidateOnSubmit}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <TextBlock Text="*Beschäftigungsstatus" FontSize="12" FontWeight="SemiBold"/>
+        <ComboBox ItemsSource="{Binding Status}" SelectedItem="{Binding SelectedEmploymentStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
+        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding Nurse[EmploymentStatus]}">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Nurse.ValidateOnSubmit}" Value="True">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        
+        <TextBlock Text="Verfügbarkeit" FontSize="12" FontWeight="SemiBold"/>
+        <TextBlock FontSize="10" Text="Klicke die Wochentage an, an der die Hebame nie Arbeiten kann. In der Regel kann eine Hebame an allen Tagen Arbeiten und der Schritt kann übersprungen werden." TextWrapping="Wrap"/>
+        <UniformGrid Columns="7" Margin="0,4,-2,20">
+            <ToggleButton Content="Mo" IsChecked="{Binding CanNotWorkMonday}" Style="{DynamicResource ToggleButtonStyle}"/>
+            <ToggleButton Content="Di" IsChecked="{Binding CanNotWorkTuesday}" Style="{DynamicResource ToggleButtonStyle}"/>
+            <ToggleButton Content="Mi" IsChecked="{Binding CanNotWorkWednesday}" Style="{DynamicResource ToggleButtonStyle}"/>
+            <ToggleButton Content="Do" IsChecked="{Binding CanNotWorkThurday}" Style="{DynamicResource ToggleButtonStyle}"/>
+            <ToggleButton Content="Fr" IsChecked="{Binding CanNotWorkFriday}" Style="{DynamicResource ToggleButtonStyle}"/>
+            <ToggleButton Content="Sa" IsChecked="{Binding CanNotWorkSaturday}" Style="{DynamicResource ToggleButtonStyle}"/>
+            <ToggleButton Content="So" IsChecked="{Binding CanNotWorkSunday}" Style="{DynamicResource ToggleButtonStyle}"/>
+
+        </UniformGrid>
+
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Abbrechen" Style="{DynamicResource ButtonCardStyle}"
+                Command="{Binding DeleteCommand}"
+                Background="#ff4040" BorderBrush="#ff4040" Foreground="White"/>
+            <Button Content="Speichern" Style="{DynamicResource ButtonCardStyle}"
+                Command="{Binding SaveCommand}" IsEnabled="{Binding IsValid}" 
+               />
+        </StackPanel>
+    </StackPanel>
+</Window>

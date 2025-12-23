@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NurseProblem"
         mc:Ignorable="d"
-        Title="NurseDetailWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="test"/>
-    </Grid>
+        Title="NurseDetailWindow" Height="550" Width="500">
+    <StackPanel Margin="20">
+        <TextBlock Text="Nurse bearbeiten" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+        <TextBlock Text="Vorname ändern:" FontSize="12" FontWeight="SemiBold"/>
+        <TextBox Text="{Binding Nurse.FirstName}" Margin="0,3,0,10"/>
+
+        <TextBlock Text="Nachname ändern:" FontSize="12" FontWeight="SemiBold"/>
+        <TextBox Text="{Binding Nurse.LastName}" Margin="0,3,0,10"/>
+        
+        <TextBlock Text="Anzahl Stunden pro Woche: " FontSize="12" FontWeight="SemiBold"/>
+        <TextBox Text="{Binding Nurse.WorkingHours}" Margin="0,3,0,10"/>
+
+        <TextBlock Text="Verfügbarkeit" FontSize="12" FontWeight="SemiBold"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="250" Margin="0,0,0,5" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
+            <ComboBox ItemsSource="{Binding Nurse.Availability}" DisplayMemberPath="Name"/>
+        </StackPanel>
+
+        <TextBlock Text="Beschäftigungsstatus" FontSize="12" FontWeight="SemiBold"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Width="250" Margin="0,0,0,5" Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}" />
+            <ComboBox ItemsSource="{Binding Nurse.EmploymentStatus}" DisplayMemberPath="Name"/>
+        </StackPanel>
+
+        
+
+        <Border Style="{StaticResource BorderCardStyle}" Width="auto">
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock Text="Hebamme Löschen" FontSize="18" FontWeight="Bold"/>
+                <Button Content="Löschen" Style="{StaticResource ButtonCardStyle}"
+Command="{Binding DeleteCommand}" Width="60"
+Foreground="Red" BorderBrush="Red" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </Border>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Abbrechen" Style="{StaticResource ButtonCardStyle}"
+        Command="{Binding DeleteCommand}" Width="70"
+        Foreground="Red" BorderBrush="Red"/>
+            <Button Content="Speichern" Style="{StaticResource ButtonCardStyle}"
+        Command="{Binding SaveCommand}" Width="60"
+        Margin="10,0,0,0"/>
+        </StackPanel>
+    </StackPanel>
+
 </Window>

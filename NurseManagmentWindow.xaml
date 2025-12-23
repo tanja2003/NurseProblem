@@ -6,49 +6,81 @@
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:NurseProblem"
         mc:Ignorable="d"
-        Title="NurseManagmentWindow" Height="400" Width="400">
+        Title="NurseManagmentWindow" Height="500" Width="700"
+        Background="{DynamicResource BgBrush}"
+        Foreground="{DynamicResource TextBrush}">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="300" />
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        <Border Margin="0,20" Padding="5" CornerRadius="10" Background="White" BorderBrush="#DDD" BorderThickness="1" Width="320">
-            <ListView ItemsSource="{Binding Nurses}" SelectedItem="{Binding SelectedNurse}" BorderThickness="0" Background="Transparent">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="🔍 Hebamme suchen..." Margin="30,8, 20, 0"/>
+                <ToggleButton Content="🌙 Dark Mode" IsChecked="{Binding IsDarkMode}" Margin="370,5" Width="100" Style="{DynamicResource ToggleButtonStyle}"/>
+            </StackPanel>
+            <TextBox Margin="30,5,20,8"  Style="{DynamicResource TextboxCardStyle}" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"  Width="300" HorizontalAlignment="Left"/>
+
+        </StackPanel>
+
+        <Border Grid.Row="1" Style="{DynamicResource BorderCardStyle}" Margin="30,15">
+
+            <ListView ItemsSource="{Binding FilteredNurses}" SelectedItem="{Binding SelectedNurse}" BorderThickness="0" Background="Transparent" AlternationCount="2">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">
                         <i:InvokeCommandAction Command="{Binding OpenNurseDetailsCommand}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Padding" Value="6"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Background" Value="{DynamicResource ListViewItemBackground}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+
+                        <Style.Triggers>
+                            <Trigger Property="ItemsControl.AlternationIndex" Value="1">
+                                <Setter Property="Background" Value="{DynamicResource ListRowAltBrush}"/>
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource ListRowHoverBrush}"/>
+                            </Trigger>
+
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource ListRowSelectedBrush}"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.ItemContainerStyle>
+
                 <ListView.View>
-                    <GridView AllowsColumnReorder="True" ColumnHeaderToolTip="Alle Hebammen">
-                        <GridViewColumn Header="First Name" Width="100" DisplayMemberBinding="{Binding Name}" />
-                        <GridViewColumn Header=" Nummer" Width="100" DisplayMemberBinding="{Binding Id}"/>
+                    <GridView AllowsColumnReorder="True">
+                        <GridView.ColumnHeaderContainerStyle>
+                            <Style TargetType="GridViewColumnHeader">
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="Padding" Value="6"/>
+                                <Setter Property="Background" Value="{DynamicResource HeaderBrush}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
+                                <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                                <Setter Property="BorderBrush" Value="{DynamicResource HeaderBorderBrush}"/>
+                            </Style>
+                        </GridView.ColumnHeaderContainerStyle>
+
+                        <GridViewColumn Header="Vorname" Width="100" DisplayMemberBinding="{Binding FirstName}" />
+                        <GridViewColumn Header="Nachname" Width="100" DisplayMemberBinding="{Binding LastName}" />
+                        <GridViewColumn Header="Nummer" Width="100" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Arbeitsstunden" Width="100" DisplayMemberBinding="{Binding WorkingHours}" />
+                        <GridViewColumn Header="Verfügbarkeit" Width="100" DisplayMemberBinding="{Binding Availability}" />
+                        <GridViewColumn Header="Arbeitsstatus" Width="100" DisplayMemberBinding="{Binding EmploymentStatus}" />
                     </GridView>
                 </ListView.View>
             </ListView>
         </Border>
-        
-        
-        <Border Grid.Row="1" Margin="0,20" Padding="20" CornerRadius="10" Background="White" BorderBrush="#DDD" BorderThickness="1" Width="320">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <TextBlock Text="Neue Hebamme" FontSize="16" FontWeight="SemiBold"  Margin="0,0,0,15"/>
-                <StackPanel Grid.Row="1" Margin="0,0,0,20">
-                    <TextBlock Text="Name" FontSize="11" Foreground="Gray" Margin="0,0,0,4"/>
-                    <TextBox Text="{Binding NurseName, UpdateSourceTrigger=PropertyChanged}"
-                     Style="{StaticResource TextboCardStyle}"/>
-                </StackPanel>
-                <Button Grid.Row="2" Content="Abbrechen" Command="{Binding CancelCommand}" Width="70" Style="{StaticResource ButtonCardStyle}"
-                Foreground="Red" BorderBrush="Red" HorizontalAlignment="Left"/>
-                <Button Grid.Row="2" Content="Speichern" Width="60" HorizontalAlignment="Right" Command="{Binding SaveCommand}" Style="{StaticResource ButtonCardStyle}"/>
-            </Grid>
-        </Border>
-
+        <Button Grid.Row="2" HorizontalAlignment="Right" Style="{DynamicResource ButtonCardStyle}" Padding="14,8" Margin="30,10" 
+            Content="➕ Neue Hebame hinzufügen"
+            Command="{Binding OpenNewNurseCommand}"/>
     </Grid>
 </Window>

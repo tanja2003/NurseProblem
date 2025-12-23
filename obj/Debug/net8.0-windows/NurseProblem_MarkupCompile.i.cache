@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\App.xaml
-101048742011
+142057998817
 
-402102765218
-2191914920277
-CalculateScheduleWindow.xaml;CalenderWindwow.xaml;DayWindow.xaml;HistoryWindow.xaml;MainWindow.xaml;NurseDetailWindow.xaml;NurseManagmentWindow.xaml;Styles\Dictionary1.xaml;Styles\Dictionary2.xaml;Styles\Dictionary3.xaml;
+491270500037
+220-611838769
+CalculateScheduleWindow.xaml;CalenderWindwow.xaml;DayWindow.xaml;HistoryWindow.xaml;MainWindow.xaml;NewNurseWindow.xaml;NurseDetailWindow.xaml;NurseManagmentWindow.xaml;Styles\Border.xaml;Styles\DashboardCardStyle.xaml;Styles\TextboxCardStyle.xaml;Styles\TextBoxErrorStyle.xaml;Themes\Dark.xaml;Themes\Light.xaml;
 
-False
+True
 
