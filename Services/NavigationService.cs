@@ -1,4 +1,5 @@
-﻿using NurseProblem.Datenbank;
+﻿using Microsoft.Extensions.DependencyInjection;
+using NurseProblem.Datenbank;
 using NurseProblem.Services.Interfaces;
 using NurseProblem.ViewModels;
 using System;
@@ -11,10 +12,10 @@ namespace NurseProblem.Services
 {
     public class NavigationService: INavigationService
     {
-        private readonly ScheduleDbContext _db;
-        public NavigationService(ScheduleDbContext db)
+        private readonly IServiceProvider _serviceProvider;
+        public NavigationService(IServiceProvider serviceProvider)
         {
-            _db = db;
+            _serviceProvider = serviceProvider;
         }
         public void OpenCalendar()
         {
@@ -38,12 +39,12 @@ namespace NurseProblem.Services
 
         public void OpenNurseManagment()
         {
-            var vm = new NurseManagementViewModel();
-            var win = new NurseManagmentWindow
+            var vm = _serviceProvider.GetRequiredService<NurseManagementViewModel>();
+            var window = new NurseManagmentWindow
             {
                 DataContext = vm,
             };
-            win.Show();
+            window.Show();
         }
 
         public void OpenHistory()
@@ -54,6 +55,17 @@ namespace NurseProblem.Services
                 DataContext = vm,
             };
             win.Show();
+        }
+
+        public void OpenNewNurse()
+        {
+            var vm = _serviceProvider.GetRequiredService<NewNurseViewModel>();
+            var window = new NewNurseWindow
+            {
+                DataContext = vm
+            };
+            vm.RequestClose += () => window.Close();
+            window.ShowDialog();
         }
     }
 }

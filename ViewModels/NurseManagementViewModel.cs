@@ -6,6 +6,7 @@ using NurseProblem.Models.DbModelle;
 using NurseProblem.Models.UiModelle;
 using NurseProblem.Services.Interfaces;
 using NurseProblem.Styles;
+using NurseProblem.UseCases;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -54,14 +55,15 @@ namespace NurseProblem.ViewModels
 
 
 
-
+        private readonly INavigationService _navigationService;
         public ICommand OpenNurseDetailsCommand { get; }
         public ICommand SaveCommand { get; }
         public ICommand OpenNewNurseCommand { get; }
 
 
-        public NurseManagementViewModel() 
+        public NurseManagementViewModel(INavigationService navigationService) 
         {
+            _navigationService = navigationService;
             Nurses = new ObservableCollection<Nurse>();
 
             OpenNurseDetailsCommand = new RelayCommand(OpenNurseDetails);
@@ -95,19 +97,6 @@ namespace NurseProblem.ViewModels
                 }
             }
             FilteredNurses = Nurses;
-            //var nurse2 = Dictionarys.NurseNames;
-
-            //foreach (var nurse in nurse2)
-            //{
-            //    var NewNurse = new Nurse();
-            //    NewNurse.Id = nurse.Key;
-            //    NewNurse.Name = nurse.Value;
-            //    Nurses.Add(NewNurse);
-            //}
-        }
-        private void LoadNurseFromDb()
-        {
-
         }
         private void SaveNurseToDb()
         {
@@ -120,7 +109,6 @@ namespace NurseProblem.ViewModels
         }
         private void OpenNurseDetails()
         {
-
             var vm = new NurseDetailViewModel(SelectedNurse!);
             var window = new NurseDetailWindow
             {
@@ -131,12 +119,7 @@ namespace NurseProblem.ViewModels
 
         private void OpenNewNurse()
         {
-            var wm = new NewNurseViewModel();
-            var window = new NewNurseWindow
-            {
-                DataContext = wm
-            };
-            window.ShowDialog();
+            _navigationService.OpenNewNurse();
         }
 
 

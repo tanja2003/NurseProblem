@@ -6,6 +6,7 @@ using NurseProblem.Datenbank;
 using NurseProblem.Models;
 using NurseProblem.Models.DbModelle;
 using NurseProblem.Models.UiModelle;
+using NurseProblem.UseCases;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,11 +34,24 @@ namespace NurseProblem.ViewModels
         Sunday = 1 << 6
     }
 
-    partial class NewNurseViewModel : INotifyPropertyChanged
+    partial class NewNurseViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
-        public Nurse Nurse { get; }
+        //private readonly Nurse _nurse = new();
+        private readonly NewNurseUseCase _addNurseUseCase;
+        private Nurse _nurse = new Nurse(0, "", "", 0, WeekDays.None, "");
+        public Nurse Nurse
+        {
+            get => _nurse;
+            set
+            {
+                if (_nurse == value) return;
+                _nurse = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand SaveCommand { get; }
         public ICommand CancelCommand { get; }
+
         public event Action? RequestClose;
         public ObservableCollection<string> Status { get; } = new ObservableCollection<string>{
             "Vollzeitkraft", "Student", "FSJ"
@@ -45,95 +59,122 @@ namespace NurseProblem.ViewModels
 
         public bool CanNotWorkMonday
         {
-            get => Nurse.UnavailableDays.HasFlag(WeekDays.Monday);
+            get => _nurse.UnavailableDays.HasFlag(WeekDays.Monday);
             set
             {
-                if (value) Nurse.UnavailableDays |= WeekDays.Monday;
-                else Nurse.UnavailableDays &= ~WeekDays.Monday;
+                if (value) _nurse.UnavailableDays |= WeekDays.Monday;
+                else _nurse.UnavailableDays &= ~WeekDays.Monday;
                 OnPropertyChanged();
             }
         }
         public bool CanNotWorkTuesday
         {
-            get => Nurse.UnavailableDays.HasFlag(WeekDays.Tuesday);
+            get => _nurse.UnavailableDays.HasFlag(WeekDays.Tuesday);
             set
             {
-                if (value) Nurse.UnavailableDays |= WeekDays.Tuesday;
-                else Nurse.UnavailableDays &= ~WeekDays.Tuesday;
+                if (value) _nurse.UnavailableDays |= WeekDays.Tuesday;
+                else _nurse.UnavailableDays &= ~WeekDays.Tuesday;
                 OnPropertyChanged();
             }
         }
         public bool CanNotWorkWednesday
         {
-            get => Nurse.UnavailableDays.HasFlag(WeekDays.Wednesday);
+            get => _nurse.UnavailableDays.HasFlag(WeekDays.Wednesday);
             set
             {
-                if (value) Nurse.UnavailableDays |= WeekDays.Wednesday;
-                else Nurse.UnavailableDays &= ~WeekDays.Wednesday;
+                if (value) _nurse.UnavailableDays |= WeekDays.Wednesday;
+                else _nurse.UnavailableDays &= ~WeekDays.Wednesday;
                 OnPropertyChanged();
             }
         }
         public bool CanNotWorkThursday
         {
-            get => Nurse.UnavailableDays.HasFlag(WeekDays.Thursday);
+            get => _nurse.UnavailableDays.HasFlag(WeekDays.Thursday);
             set
             {
-                if (value) Nurse.UnavailableDays |= WeekDays.Thursday;
-                else Nurse.UnavailableDays &= ~WeekDays.Thursday;
+                if (value) _nurse.UnavailableDays |= WeekDays.Thursday;
+                else _nurse.UnavailableDays &= ~WeekDays.Thursday;
                 OnPropertyChanged();
             }
         }
         public bool CanNotWorkFriday
         {
-            get => Nurse.UnavailableDays.HasFlag(WeekDays.Friday);
+            get => _nurse.UnavailableDays.HasFlag(WeekDays.Friday);
             set
             {
-                if (value) Nurse.UnavailableDays |= WeekDays.Friday;
-                else Nurse.UnavailableDays &= ~WeekDays.Friday;
+                if (value) _nurse.UnavailableDays |= WeekDays.Friday;
+                else _nurse.UnavailableDays &= ~WeekDays.Friday;
                 OnPropertyChanged();
             }
         }
         public bool CanNotWorkSaturday
         {
-            get => Nurse.UnavailableDays.HasFlag(WeekDays.Saturday);
+            get => _nurse.UnavailableDays.HasFlag(WeekDays.Saturday);
             set
             {
-                if (value) Nurse.UnavailableDays |= WeekDays.Saturday;
-                else Nurse.UnavailableDays &= ~WeekDays.Saturday;
+                if (value) _nurse.UnavailableDays |= WeekDays.Saturday;
+                else _nurse.UnavailableDays &= ~WeekDays.Saturday;
                 OnPropertyChanged();
             }
         }
         public bool CanNotWorkSunday
         {
-            get => Nurse.UnavailableDays.HasFlag(WeekDays.Sunday);
+            get => _nurse.UnavailableDays.HasFlag(WeekDays.Sunday);
             set
             {
-                if (value) Nurse.UnavailableDays |= WeekDays.Sunday;
-                else Nurse.UnavailableDays &= ~WeekDays.Sunday;
+                if (value) _nurse.UnavailableDays |= WeekDays.Sunday;
+                else _nurse.UnavailableDays &= ~WeekDays.Sunday;
                 OnPropertyChanged();
             }
         }
 
-       
 
-
-
-
-        private string _selectedEmploymentStatus;
-        public string SelectedEmploymentStatus 
+        public string FirstName
         {
-            get => _selectedEmploymentStatus;
+            get => _nurse.FirstName;
             set
             {
-                if (_selectedEmploymentStatus != value)
-                {
-                    _selectedEmploymentStatus = value;
-                    OnPropertyChanged(nameof(SelectedEmploymentStatus));
-                    if (Nurse != null)
-                        Nurse.EmploymentStatus = value;
-                }
+                if (_nurse.FirstName == value) return;
+                _nurse.FirstName = value;
+                OnPropertyChanged();
+                OnPropertyChanged("Item[]");
             }
         }
+        public string LastName
+        {
+            get => _nurse.LastName;
+            set
+            {
+                if (_nurse.LastName == value) return;
+                _nurse.LastName = value;
+                OnPropertyChanged();
+                OnPropertyChanged("Item[]");
+            }
+        }
+        public double WorkingHours
+        {
+            get => _nurse.WorkingHours;
+            set
+            {
+                if (_nurse.WorkingHours == value) return;
+                _nurse.WorkingHours = value;
+                OnPropertyChanged(nameof(WorkingHours));
+                OnPropertyChanged("Item[]");
+            }
+        }
+        public string EmploymentStatus
+        {
+            get => _nurse.EmploymentStatus;
+            set
+            {
+                if (_nurse.EmploymentStatus == value) return;
+                _nurse.EmploymentStatus = value;
+                OnPropertyChanged(nameof(EmploymentStatus));
+                OnPropertyChanged("Item[]");
+            }
+        }
+
+
         private bool _validateOnSubmit;
         public bool ValidateOnSubmit
         {
@@ -141,32 +182,27 @@ namespace NurseProblem.ViewModels
             set
             {
                 _validateOnSubmit = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(Nurse.FirstName));
-                OnPropertyChanged(nameof(Nurse.LastName));
-                OnPropertyChanged(nameof(Nurse.WorkingHours));
-                OnPropertyChanged(nameof(Nurse.EmploymentStatus));
-                OnPropertyChanged(nameof(Nurse.UnavailableDays));
+                OnPropertyChanged(null);
             }
         }
 
-        public NewNurseViewModel ()
+
+        
+        public NewNurseViewModel(NewNurseUseCase addNurseUseCase)
         {
-            Nurse = new Nurse();
-            SaveCommand = new RelayCommand(SaveNurseToDb );
+            _addNurseUseCase = addNurseUseCase;
+            // _nurse = new Nurse();
+            SaveCommand = new RelayCommand(async () => await SaveNurseAsync());
             CancelCommand = new RelayCommand(CloseWindow);
         }
 
-        private void CloseWindow()
-        {
-            RequestClose?.Invoke();
-        }
+        private void CloseWindow() => RequestClose?.Invoke();
 
         private void SaveNurseToDb()
         {
-            Nurse.ValidateOnSubmit = true;
+            ValidateOnSubmit = true;
             CommandManager.InvalidateRequerySuggested();
-            if (!Nurse.IsValid())
+            if (!IsValid())
                 return;
             
             try
@@ -177,17 +213,17 @@ namespace NurseProblem.ViewModels
                 context.Database.EnsureCreated();
                 context.Nurses.Add(new Models.DbModelle.NurseEntity
                 {
-                    Id = Nurse.Id,
-                    FirstName = Nurse.FirstName,
-                    LastName = Nurse.LastName,
-                    WorkingHours = Nurse.WorkingHours,
-                    UnavailableDays = Nurse.UnavailableDays,
-                    EmploymentStatus = Nurse.EmploymentStatus
+                    Id = _nurse.Id,
+                    FirstName = _nurse.FirstName,
+                    LastName = _nurse.LastName,
+                    WorkingHours = _nurse.WorkingHours,
+                    UnavailableDays = _nurse.UnavailableDays,
+                    EmploymentStatus = _nurse.EmploymentStatus
                 });
 
                 context.SaveChanges();
                 // Nachricht ans Parent senden
-                WeakReferenceMessenger.Default.Send(new NurseSavedMessage(Nurse));
+                WeakReferenceMessenger.Default.Send(new NurseSavedMessage(_nurse));
                 CloseWindow();
             }
             catch (ValidationException ex)
@@ -204,24 +240,74 @@ namespace NurseProblem.ViewModels
 
         }
 
+        private async Task SaveNurseAsync()
+        {
+            try
+            {
+                await _addNurseUseCase.ExecuteAsync(_nurse);
+                CloseWindow();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Fehler", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         #region Validation
 
         /// <summary>
         /// UI/Validation
         /// IDataErrorInfo
         /// for Userfeedback
+        ///  Availabilty can be empty --> only stores exceptions
         /// </summary>
+        public string Error => null;
+        public string this[string propertyName]
+        {
+            get
+            {
+                if (!ValidateOnSubmit)
+                    return null;
+
+                switch (propertyName)
+                {
+                    case nameof(_nurse.FirstName):
+                        if (string.IsNullOrWhiteSpace(_nurse.FirstName)) return "Vorname ist erforderlich";
+                        break;
+                    case nameof(_nurse.LastName):
+                        if (string.IsNullOrWhiteSpace(_nurse.LastName)) return "Nachname ist erforderlich";
+                        break;
+                    case nameof(_nurse.WorkingHours):
+                        if (_nurse.WorkingHours <= 0) return "Arbeitsstunden müssen größer als oder gleich 0 sein";
+                        break;
+                    case nameof(_nurse.EmploymentStatus):
+                        if (string.IsNullOrWhiteSpace(_nurse.EmploymentStatus)) return "Status ist erforderlich";
+                        break;
+                }
+                return null;
+            }
+        }
+        public bool IsValid()
+        {
+            ValidateOnSubmit = true;
+
+            return string.IsNullOrWhiteSpace(this[nameof(_nurse.FirstName)])
+                && string.IsNullOrWhiteSpace(this[nameof(_nurse.LastName)])
+                && string.IsNullOrWhiteSpace(this[nameof(_nurse.WorkingHours)])
+                && string.IsNullOrWhiteSpace(this[nameof(_nurse.EmploymentStatus)]);
+        }
+
         
 
         private void ValidateNurse()
         {
-            if (string.IsNullOrWhiteSpace(Nurse.FirstName))
+            if (string.IsNullOrWhiteSpace(_nurse.FirstName))
                 throw new InvalidOperationException("Vorname ist erforderlich");
-            if (string.IsNullOrWhiteSpace(Nurse.LastName))
+            if (string.IsNullOrWhiteSpace(_nurse.LastName))
                 throw new InvalidOperationException("Nachname ist erforderlich");
-            if (Nurse.WorkingHours < 0)
+            if (_nurse.WorkingHours < 0)
                 throw new InvalidOperationException("Arbeitsstunden müssen größer 0 sein");
-            if (string.IsNullOrWhiteSpace(Nurse.EmploymentStatus))
+            if (string.IsNullOrWhiteSpace(_nurse.EmploymentStatus))
                 throw new InvalidOperationException("Arbeitsstatus ist erforderlich");
         }
 

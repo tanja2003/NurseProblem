@@ -12,6 +12,7 @@ namespace NurseProblem.Services.Interfaces
         void OpenCalculateSchedule();
         void OpenNurseManagment();
         void OpenHistory();
+        void OpenNewNurse();
 
     }
 }

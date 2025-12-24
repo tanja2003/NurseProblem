@@ -19,6 +19,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NavigationService = NurseProblem.Services.NavigationService;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace NurseProblem
 {
@@ -37,9 +38,7 @@ namespace NurseProblem
         public MainWindow()
         {
             InitializeComponent();
-            var db = new ScheduleDbContext();
-            var navigation = new NavigationService(db);
-            DataContext = new StartViewModel(navigation);
+            DataContext = App.Services.GetRequiredService<StartViewModel>();
 
         }
 

@@ -16,6 +16,11 @@ namespace NurseProblem.Datenbank
         public DbSet<DayEntity> Days { get; set; }
         public DbSet<ShiftSlotEntity> ShiftSlots { get; set; }
         public DbSet<NurseEntity> Nurses { get; set; }
+        public ScheduleDbContext(DbContextOptions<ScheduleDbContext> options) : base(options)
+        {
+        }
+        public ScheduleDbContext() { }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

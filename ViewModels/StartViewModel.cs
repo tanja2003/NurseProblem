@@ -16,6 +16,8 @@ namespace NurseProblem.ViewModels
         public ICommand CalculateScheduleCommand { get; }
         public ICommand OpenNurseManagementCommand { get; }
         public ICommand OpenHistoryCommand { get; }
+        public ICommand OpenNewNurseCommand { get; }
+
 
         public StartViewModel(INavigationService navigation)
         {
@@ -24,6 +26,7 @@ namespace NurseProblem.ViewModels
             CalculateScheduleCommand = new RelayCommand(CalculateSchedule);
             OpenNurseManagementCommand = new RelayCommand(OpenNurseManagement);
             OpenHistoryCommand = new RelayCommand(OpenHistory);
+            OpenNewNurseCommand = new RelayCommand(OpenNewNurse);
          }
 
         private void OpenCalendar()
@@ -43,6 +46,10 @@ namespace NurseProblem.ViewModels
         private void OpenHistory()
         {
             _navigation.OpenHistory();
+        }
+        private void OpenNewNurse()
+        {
+            _navigation.OpenNewNurse();
         }
     }
 }

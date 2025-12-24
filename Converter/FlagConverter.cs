@@ -11,19 +11,24 @@ using System.Windows.Data;
 
 namespace NurseProblem.Converter
 {
-    class FlagConverter: IValueConverter
+    public class FlagEnumConverter : IValueConverter
     {
-        public object Convert(object values, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var current = (WeekDays)values;
-            var flag = (WeekDays)Enum.Parse(typeof(WeekDays), parameter.ToString());
-
-            return current.HasFlag(flag);
+            if (value is Enum enumValue && parameter is string flagName)
+            {
+                var flag = (Enum)Enum.Parse(enumValue.GetType(), flagName);
+                return enumValue.HasFlag(flag);
+            }
+            return false;
         }
 
-        public object ConvertBack(object value, Type targetTypes, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return Binding.DoNothing;
+            throw new NotSupportedException("Use MultiBinding for ConvertBack");
         }
     }
+
+
+
 }

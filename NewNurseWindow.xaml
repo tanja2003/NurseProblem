@@ -6,19 +6,19 @@
         xmlns:local="clr-namespace:NurseProblem"
         xmlns:conv="clr-namespace:NurseProblem.Converter"
         mc:Ignorable="d"
-        Title="NewNurseWindow" Height="450" Width="400"
+        Title="NewNurseWindow" Height="550" Width="400"
         >
     
     <StackPanel Margin="20">
         <TextBlock Text="Neue Hebame hinzufügen" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
         <TextBlock Text="*Vorname:" FontSize="12" FontWeight="SemiBold" />
-        <TextBox x:Name="FirstNameBox" Text="{Binding Nurse.FirstName,  UpdateSourceTrigger=PropertyChanged,  
+        <TextBox x:Name="FirstNameBox" Text="{Binding FirstName,  UpdateSourceTrigger=PropertyChanged,  
             ValidatesOnDataErrors=True,  NotifyOnValidationError=True}"  Margin="0,3,0,0"/>
-        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding Nurse[FirstName]}">
+        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding [FirstName]}">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Nurse.ValidateOnSubmit}" Value="True">
+                        <DataTrigger Binding="{Binding ValidateOnSubmit}" Value="True">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -28,12 +28,12 @@
 
 
         <TextBlock Text="*Nachname ändern:" FontSize="12" FontWeight="SemiBold"/>
-        <TextBox Text="{Binding Nurse.LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
-        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding Nurse[LastName]}">
+        <TextBox Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
+        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding [LastName]}">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Nurse.ValidateOnSubmit}" Value="True">
+                        <DataTrigger Binding="{Binding ValidateOnSubmit}" Value="True">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -42,12 +42,12 @@
         </TextBlock>
 
         <TextBlock Text="*Anzahl Stunden pro Woche: " FontSize="12" FontWeight="SemiBold"/>
-        <TextBox Text="{Binding Nurse.WorkingHours, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
-        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding Nurse[WorkingHours]}">
+        <TextBox Text="{Binding WorkingHours, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
+        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding [WorkingHours]}">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Nurse.ValidateOnSubmit}" Value="True">
+                        <DataTrigger Binding="{Binding ValidateOnSubmit}" Value="True">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
@@ -55,14 +55,14 @@
             </TextBlock.Style>
         </TextBlock>
 
-        <TextBlock Text="*Beschäftigungsstatus" FontSize="12" FontWeight="SemiBold"/>
-        <ComboBox ItemsSource="{Binding Status}" SelectedItem="{Binding SelectedEmploymentStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+        <TextBlock Text="*Beschäftigungsstatus:" FontSize="12" FontWeight="SemiBold"/>
+        <ComboBox ItemsSource="{Binding Status}" SelectedItem="{Binding EmploymentStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
             ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
-        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding Nurse[EmploymentStatus]}">
+        <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding [EmploymentStatus]}">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Nurse.ValidateOnSubmit}" Value="True">
+                        <DataTrigger Binding="{Binding ValidateOnSubmit}" Value="True">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
