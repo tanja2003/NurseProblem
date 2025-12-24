@@ -40,6 +40,7 @@ namespace NurseProblem.Models.UiModelle
                 }
             }
         }
+
         private double _workingHours;
         public double WorkingHours
         {
@@ -78,7 +79,10 @@ namespace NurseProblem.Models.UiModelle
         }
         public Nurse () { }
 
-        
+        #region Validation
+        /// <summary>
+        ///  Availabilty can be empty --> only stores exceptions
+        /// </summary>
         public string Error => null;
         public string this[string propertyName]
         {
@@ -87,21 +91,22 @@ namespace NurseProblem.Models.UiModelle
                 if (!ValidateOnSubmit)
                     return null;
 
-                return propertyName switch
+                switch (propertyName)
                 {
-                    nameof(FirstName) when string.IsNullOrWhiteSpace(FirstName)
-                        => "Vorname ist erforderlich",
-
-                    nameof(LastName) when string.IsNullOrWhiteSpace(LastName)
-                        => "Nachname ist erforderlich",
-
-                    nameof(WorkingHours) when WorkingHours <= 0
-                        => "Arbeitsstunden müssen größer als 0 sein",
-
-                    nameof(EmploymentStatus) when string.IsNullOrWhiteSpace(EmploymentStatus)
-                        => "Status ist erforderlich",
-                    _ => null
-                };
+                    case nameof(FirstName):
+                        if (string.IsNullOrWhiteSpace(FirstName)) return "Vorname ist erforderlich";
+                        break;
+                    case nameof(LastName):
+                        if (string.IsNullOrWhiteSpace(LastName)) return "Nachname ist erforderlich";
+                        break;
+                    case nameof(WorkingHours):
+                        if (WorkingHours <= 0) return "Arbeitsstunden müssen größer als oder gleich 0 sein";
+                        break;
+                    case nameof(EmploymentStatus):
+                        if (string.IsNullOrWhiteSpace(EmploymentStatus)) return "Status ist erforderlich";
+                        break;
+                }
+                return null;
             }
         }
         public bool IsValid()
@@ -111,8 +116,7 @@ namespace NurseProblem.Models.UiModelle
             return string.IsNullOrWhiteSpace(this[nameof(FirstName)])
                 && string.IsNullOrWhiteSpace(this[nameof(LastName)])
                 && string.IsNullOrWhiteSpace(this[nameof(WorkingHours)])
-                && string.IsNullOrWhiteSpace(this[nameof(EmploymentStatus)])
-                && string.IsNullOrWhiteSpace(this[nameof(UnavailableDays)]);
+                && string.IsNullOrWhiteSpace(this[nameof(EmploymentStatus)]);
         }
 
         private bool _validateOnSubmit;
@@ -124,16 +128,15 @@ namespace NurseProblem.Models.UiModelle
                 if (_validateOnSubmit != value)
                 {
                     _validateOnSubmit = value;
-                    OnPropertyChanged(null); // 🔥 GANZ WICHTIG
+                    OnPropertyChanged(null); 
                 }
             }
         }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-
     }
 
 }

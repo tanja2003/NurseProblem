@@ -48,7 +48,7 @@
               "RelativeDocumentMoniker": "Models\\UiModelle\\Nurse.cs",
               "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem2\\Models\\UiModelle\\Nurse.cs",
               "RelativeToolTip": "Models\\UiModelle\\Nurse.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAAAEQAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAAwG0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-23T14:57:05.803Z",
               "EditorCaption": ""
@@ -62,8 +62,7 @@
               "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem2\\Themes\\Light.xaml",
               "RelativeToolTip": "Themes\\Light.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-23T11:05:10.104Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-23T11:05:10.104Z"
             },
             {
               "$type": "Document",
@@ -74,8 +73,7 @@
               "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem2\\Themes\\Dark.xaml",
               "RelativeToolTip": "Themes\\Dark.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-23T11:04:58.381Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-23T11:04:58.381Z"
             },
             {
               "$type": "Document",
@@ -87,8 +85,7 @@
               "RelativeToolTip": "NewNurseWindow.xaml.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAABgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-20T12:43:25.886Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-20T12:43:25.886Z"
             },
             {
               "$type": "Document",
@@ -99,8 +96,7 @@
               "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem2\\NewNurseWindow.xaml",
               "RelativeToolTip": "NewNurseWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-12-20T10:48:45.166Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-20T10:48:45.166Z"
             },
             {
               "$type": "Document",
@@ -108,9 +104,9 @@
               "Title": "NewNurseViewModel.cs",
               "DocumentMoniker": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem2\\ViewModels\\NewNurseViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\NewNurseViewModel.cs",
-              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem2\\ViewModels\\NewNurseViewModel.cs*",
-              "RelativeToolTip": "ViewModels\\NewNurseViewModel.cs*",
-              "ViewState": "AgIAANMAAAAAAAAAAAAiwNoAAABQAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\tanja\\Eigene Projekte\\Wpf\\NurseProblem2\\ViewModels\\NewNurseViewModel.cs",
+              "RelativeToolTip": "ViewModels\\NewNurseViewModel.cs",
+              "ViewState": "AgIAAJMAAAAAAAAAAAAowKwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-20T11:40:59.626Z",
               "EditorCaption": ""
