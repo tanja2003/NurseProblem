@@ -10,8 +10,8 @@
                 <ResourceDictionary Source="/Styles/TextboxCardStyle.xaml"/>
                 <ResourceDictionary Source="/Styles/Border.xaml"/>
                 <ResourceDictionary Source="/Styles/TextBoxErrorStyle.xaml"/>
-                <ResourceDictionary Source="/Themes/Dark.xaml"/>
-                <ResourceDictionary Source="/Themes/Light.xaml"/>
+                <ResourceDictionary Source="/Styles/Themes/Dark.xaml"/>
+                <ResourceDictionary Source="/Styles/Themes/Light.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

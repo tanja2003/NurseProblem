@@ -1,5 +1,5 @@
-﻿using NurseProblem.Models;
-using NurseProblem.ViewModels;
+﻿using NurseProblem.DomainLayer;
+using NurseProblem.InterfaceAdaptersLayer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

@@ -1,8 +1,7 @@
 ﻿using Google.OrTools.Sat;
 using NurseProblem.Converter;
-using NurseProblem.Datenbank;
-using NurseProblem.Models.UiModelle;
-using NurseProblem.ViewModels;
+using NurseProblem.FrameworkLayer.Datenbank;
+using NurseProblem.DomainLayer.UiModelle;
 using NurseProblem.Services;
 using System;
 using System.Collections.Generic;
@@ -20,6 +19,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NavigationService = NurseProblem.Services.NavigationService;
 using Microsoft.Extensions.DependencyInjection;
+using NurseProblem.InterfaceAdaptersLayer.ViewModels;
 
 namespace NurseProblem
 {

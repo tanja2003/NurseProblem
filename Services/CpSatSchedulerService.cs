@@ -1,11 +1,11 @@
 ﻿using Google.OrTools.Sat;
-using NurseProblem.Models.SolverModelle;
+using NurseProblem.DomainLayer.SolverModelle;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Assignment = NurseProblem.Models.SolverModelle.Assignment;
+using Assignment = NurseProblem.DomainLayer.SolverModelle.Assignment;
 
 namespace NurseProblem.Services
 {

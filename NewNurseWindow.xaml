@@ -8,6 +8,9 @@
         mc:Ignorable="d"
         Title="NewNurseWindow" Height="550" Width="400"
         >
+    <Window.Resources>
+        <conv:EnumDescriptionConverter x:Key="EnumDescriptionConverter"/>
+    </Window.Resources>
     
     <StackPanel Margin="20">
         <TextBlock Text="Neue Hebame hinzufügen" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
@@ -42,7 +45,7 @@
         </TextBlock>
 
         <TextBlock Text="*Anzahl Stunden pro Woche: " FontSize="12" FontWeight="SemiBold"/>
-        <TextBox Text="{Binding WorkingHours, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
+        <TextBox Text="{Binding WeeklyHours, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
         <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding [WorkingHours]}">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -56,8 +59,14 @@
         </TextBlock>
 
         <TextBlock Text="*Beschäftigungsstatus:" FontSize="12" FontWeight="SemiBold"/>
-        <ComboBox ItemsSource="{Binding Status}" SelectedItem="{Binding EmploymentStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
-            ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0"/>
+        <ComboBox ItemsSource="{Binding EmploymentStatuses}" SelectedItem="{Binding EmploymentStatus, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, 
+            ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Margin="0,3,0,0">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Converter={StaticResource EnumDescriptionConverter}}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
         <TextBlock Foreground="Red" FontSize="10"  Margin="2,2,0,10" Text="{Binding [EmploymentStatus]}">
             <TextBlock.Style>
                 <Style TargetType="TextBlock">
@@ -89,7 +98,7 @@
                 Command="{Binding DeleteCommand}"
                 Background="#ff4040" BorderBrush="#ff4040" Foreground="White"/>
             <Button Content="Speichern" Style="{DynamicResource ButtonCardStyle}"
-                Command="{Binding SaveCommand}" IsEnabled="{Binding IsValid}" 
+                Command="{Binding SaveCommand}" 
                />
         </StackPanel>
     </StackPanel>

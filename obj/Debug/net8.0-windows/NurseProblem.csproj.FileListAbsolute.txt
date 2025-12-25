@@ -558,6 +558,6 @@ C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\NewNur
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\DashboardCardStyle.baml
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\TextboxCardStyle.baml
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\TextBoxErrorStyle.baml
-C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Themes\Dark.baml
-C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Themes\Light.baml
 C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\bin\Debug\net8.0-windows\CommunityToolkit.Mvvm.dll
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\Themes\Dark.baml
+C:\Users\tanja\Eigene Projekte\Wpf\NurseProblem2\obj\Debug\net8.0-windows\Styles\Themes\Light.baml

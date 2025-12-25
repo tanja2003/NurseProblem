@@ -1,4 +1,4 @@
-﻿using NurseProblem.ViewModels;
+﻿using NurseProblem.InterfaceAdaptersLayer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace NurseProblem
             InitializeComponent();
             Loaded += (_, __) =>
             {
-                if (DataContext is NewNurseViewModel vm)
+                if (DataContext is CreateNurseViewModel vm)
                 {
                     vm.RequestClose += OnRequestClose;
                 }

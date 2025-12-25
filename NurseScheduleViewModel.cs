@@ -1,5 +1,5 @@
-﻿using NurseProblem.Models.SolverModelle;
-using NurseProblem.Models.UiModelle;
+﻿using NurseProblem.DomainLayer.SolverModelle;
+using NurseProblem.DomainLayer.UiModelle;
 using NurseProblem.Services;
 using System;
 using System.Collections.Generic;
