@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using NurseProblem.DomainLayer.UiModelle;
 using NurseProblem.FrameworkLayer.Datenbank;
 using NurseProblem.InterfaceAdaptersLayer.ViewModels;
 using NurseProblem.Services.Interfaces;
@@ -61,6 +62,17 @@ namespace NurseProblem.Services
         {
             var vm = _serviceProvider.GetRequiredService<CreateNurseViewModel>();
             var window = new NewNurseWindow
+            {
+                DataContext = vm
+            };
+            vm.RequestClose += () => window.Close();
+            window.ShowDialog();
+        }
+
+        public void OpenNurseDetail(Nurse nurse)
+        {
+            var vm = ActivatorUtilities.CreateInstance<NurseDetailViewModel>( _serviceProvider, nurse );
+            var window = new NurseDetailWindow
             {
                 DataContext = vm
             };

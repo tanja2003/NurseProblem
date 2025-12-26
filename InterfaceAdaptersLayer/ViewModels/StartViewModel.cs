@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
+using NurseProblem.DomainLayer.UiModelle;
 using NurseProblem.Services.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
         public ICommand OpenNurseManagementCommand { get; }
         public ICommand OpenHistoryCommand { get; }
         public ICommand OpenNewNurseCommand { get; }
+        public ICommand OpenNurseDetailCommand { get; }
 
 
         public StartViewModel(INavigationService navigation)
@@ -27,7 +29,8 @@ namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
             OpenNurseManagementCommand = new RelayCommand(OpenNurseManagement);
             OpenHistoryCommand = new RelayCommand(OpenHistory);
             OpenNewNurseCommand = new RelayCommand(OpenNewNurse);
-         }
+            OpenNurseDetailCommand = new RelayCommand(OpenNurseDetails);
+        }
 
         private void OpenCalendar()
         {
@@ -50,6 +53,11 @@ namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
         private void OpenNewNurse()
         {
             _navigation.OpenNewNurse();
+        }
+
+        private void OpenNurseDetails(Nurse nurse)
+        {
+            _navigation.OpenNurseDetail(nurse);
         }
     }
 }

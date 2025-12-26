@@ -42,7 +42,7 @@ Foreground="Red" BorderBrush="Red" HorizontalAlignment="Left"/>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Abbrechen" Style="{StaticResource ButtonCardStyle}"
-        Command="{Binding DeleteCommand}" Width="70"
+        Command="{Binding CancelCommand}" Width="70"
         Foreground="Red" BorderBrush="Red"/>
             <Button Content="Speichern" Style="{StaticResource ButtonCardStyle}"
         Command="{Binding SaveCommand}" Width="60"

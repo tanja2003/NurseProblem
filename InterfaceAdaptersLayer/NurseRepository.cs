@@ -29,9 +29,8 @@ namespace NurseProblem.Infrastructure
         /// </summary>
         /// <param name="nurse">nurse to be stored</param>
         /// <returns></returns>
-        public async Task AddNurseToDbAsync(Nurse nurse)
+        public async Task AddNurseAsync(Nurse nurse)
         {
-            CommandManager.InvalidateRequerySuggested();
             var entity = new NurseEntity
             {
                 FirstName = nurse.FirstName,
@@ -45,7 +44,6 @@ namespace NurseProblem.Infrastructure
             await _context.SaveChangesAsync();
 
             nurse.SetId(entity.Id);
-            WeakReferenceMessenger.Default.Send(new NurseSavedMessage(nurse));
         }
 
         public async Task<Nurse?> GetByIdAsync(int id)

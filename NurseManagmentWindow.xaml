@@ -5,10 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:local="clr-namespace:NurseProblem"
+        xmlns:conv="clr-namespace:NurseProblem.Converter"
         mc:Ignorable="d"
         Title="NurseManagmentWindow" Height="500" Width="700"
         Background="{DynamicResource BgBrush}"
         Foreground="{DynamicResource TextBrush}">
+    <Window.Resources>
+        <conv:EnumDescriptionConverter x:Key="EnumDescriptionConverter" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -74,7 +78,7 @@
                         <GridViewColumn Header="Nummer" Width="100" DisplayMemberBinding="{Binding Id}"/>
                         <GridViewColumn Header="Arbeitsstunden" Width="100" DisplayMemberBinding="{Binding WorkingHours}" />
                         <GridViewColumn Header="Verfügbarkeit" Width="100" DisplayMemberBinding="{Binding Availability}" />
-                        <GridViewColumn Header="Arbeitsstatus" Width="100" DisplayMemberBinding="{Binding EmploymentStatus}" />
+                        <GridViewColumn Header="Arbeitsstatus" Width="100" DisplayMemberBinding="{Binding EmploymentStatus,  Converter={StaticResource EnumDescriptionConverter}}" />
                     </GridView>
                 </ListView.View>
             </ListView>

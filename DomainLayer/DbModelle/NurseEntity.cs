@@ -1,4 +1,5 @@
-﻿using NurseProblem.InterfaceAdaptersLayer.ViewModels;
+﻿using NurseProblem.DomainLayer.Enums;
+using NurseProblem.InterfaceAdaptersLayer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

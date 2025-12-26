@@ -95,7 +95,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Abbrechen" Style="{DynamicResource ButtonCardStyle}"
-                Command="{Binding DeleteCommand}"
+                Command="{Binding CancelCommand}"
                 Background="#ff4040" BorderBrush="#ff4040" Foreground="White"/>
             <Button Content="Speichern" Style="{DynamicResource ButtonCardStyle}"
                 Command="{Binding SaveCommand}" 

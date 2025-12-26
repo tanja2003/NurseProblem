@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using NurseProblem.ApplicationLayer;
 using NurseProblem.FrameworkLayer.Datenbank;
 using NurseProblem.Infrastructure;
 using NurseProblem.InterfaceAdaptersLayer.ViewModels;
@@ -28,6 +29,7 @@ namespace NurseProblem
             services.AddTransient<CreateNurseViewModel>();
             services.AddTransient<NurseManagementViewModel>();
             services.AddTransient<StartViewModel>();
+            services.AddTransient<NurseDetailViewModel>();
 
             // Services
             services.AddSingleton<INavigationService, NavigationService>();
@@ -36,6 +38,7 @@ namespace NurseProblem
 
             // UseCases / Infra
             services.AddTransient<CreateNurseUseCase>();
+            services.AddTransient<ManageNurseUseCase>();
             services.AddTransient<INurseRepository, NurseRepository>();
 
             Services = services.BuildServiceProvider();

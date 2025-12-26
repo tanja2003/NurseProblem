@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NurseProblem.DomainLayer.UiModelle;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ namespace NurseProblem.Services.Interfaces
         void OpenNurseManagment();
         void OpenHistory();
         void OpenNewNurse();
+        void OpenNurseDetail(Nurse nurse);
 
     }
 }

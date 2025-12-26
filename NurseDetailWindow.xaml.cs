@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NurseProblem.InterfaceAdaptersLayer.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,18 @@ namespace NurseProblem
         public NurseDetailWindow()
         {
             InitializeComponent();
+            Loaded += (_, __) =>
+            {
+                if (DataContext is NurseDetailViewModel vm)
+                {
+                    vm.RequestClose += OnRequestClose;
+                }
+            };
+        }
+
+        private void OnRequestClose()
+        {
+            Close();
         }
     }
 }

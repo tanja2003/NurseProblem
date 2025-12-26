@@ -10,7 +10,7 @@ namespace NurseProblem.UseCases.Interfaces
 {
     public interface INurseRepository
     {
-        Task AddNurseToDbAsync(Nurse nurse);
+        Task AddNurseAsync(Nurse nurse);
         Task<Nurse?> GetByIdAsync(int id);
     }
 }

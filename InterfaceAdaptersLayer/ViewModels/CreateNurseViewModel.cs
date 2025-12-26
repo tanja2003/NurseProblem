@@ -19,36 +19,11 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Markup;
 using NurseProblem.Services.Interfaces;
+using NurseProblem.DomainLayer.Enums;
 
 namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
 {
-    [Flags]
-    public enum WeekDays
-    {
-        None = 0,
-        Monday = 1 << 0,
-        Tuesday = 1 << 1,
-        Wednesday = 1 << 2,
-        Thursday = 1 << 3,
-        Friday = 1 << 4,
-        Saturday = 1 << 5,
-        Sunday = 1 << 6
-    }
-    public enum EmploymentStatus
-    {
-        None = 0,
-        [Description("Vollzeit")]
-        FullTimeEmployee,
-
-        [Description("Teilzeit")]
-        PartTimeEmployee = 2,
-
-        [Description("Student")]
-        Student = 3,
-
-        [Description("FSJ")]
-        FSJ = 4,
-    }
+    
 
     partial class CreateNurseViewModel : INotifyPropertyChanged, IDataErrorInfo
     {
@@ -225,6 +200,7 @@ namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
             try
             {
                 // Nurse Entity will be build in UseCase layer
+                CommandManager.InvalidateRequerySuggested();
                 var command = new CreateNurseCommand(
                     FirstName,
                     LastName,
@@ -232,7 +208,8 @@ namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
                     UnavailableDays,
                     EmploymentStatus
                 );
-                await _addNurseUseCase.ExecuteSaveNurseAsync(command);
+                var nurse = await _addNurseUseCase.ExecuteSaveNurseAsync(command);
+                WeakReferenceMessenger.Default.Send(new NurseSavedMessage(nurse));
                 CloseWindow();
             }
             catch (DomainException ex)
@@ -266,7 +243,7 @@ namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
                         if (WeeklyHours <= 0) return "Arbeitsstunden müssen größer als oder gleich 0 sein";
                         break;
                     case nameof(EmploymentStatus):
-                        if (EmploymentStatus == ViewModels.EmploymentStatus.None) return "Status ist erforderlich";
+                        if (EmploymentStatus == EmploymentStatus.None) return "Status ist erforderlich";
                         break;
                 }
                 return null;

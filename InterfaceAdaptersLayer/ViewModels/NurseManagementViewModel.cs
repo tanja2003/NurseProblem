@@ -1,9 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.Messaging;
+using NurseProblem.ApplicationLayer;
 using NurseProblem.Converter;
-using NurseProblem.FrameworkLayer.Datenbank;
 using NurseProblem.DomainLayer;
 using NurseProblem.DomainLayer.DbModelle;
 using NurseProblem.DomainLayer.UiModelle;
+using NurseProblem.FrameworkLayer.Datenbank;
 using NurseProblem.Services.Interfaces;
 using NurseProblem.Styles.Themes;
 using NurseProblem.UseCases;
@@ -56,14 +57,16 @@ namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
 
 
         private readonly INavigationService _navigationService;
+        private readonly ManageNurseUseCase _manageNurseUseCase;
         public ICommand OpenNurseDetailsCommand { get; }
         public ICommand SaveCommand { get; }
         public ICommand OpenNewNurseCommand { get; }
 
 
-        public NurseManagementViewModel(INavigationService navigationService) 
+        public NurseManagementViewModel(INavigationService navigationService, ManageNurseUseCase manageNurseUseCase) 
         {
             _navigationService = navigationService;
+            _manageNurseUseCase = manageNurseUseCase;
             Nurses = new ObservableCollection<Nurse>();
 
             OpenNurseDetailsCommand = new RelayCommand(OpenNurseDetails);
@@ -109,12 +112,7 @@ namespace NurseProblem.InterfaceAdaptersLayer.ViewModels
         }
         private void OpenNurseDetails()
         {
-            var vm = new NurseDetailViewModel(SelectedNurse!);
-            var window = new NurseDetailWindow
-            {
-                DataContext = vm
-            };
-            window.ShowDialog(); 
+            _navigationService.OpenNurseDetail(SelectedNurse);
         }
 
         private void OpenNewNurse()

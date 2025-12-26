@@ -1,4 +1,5 @@
 ﻿using NurseProblem.DomainLayer;
+using NurseProblem.DomainLayer.Enums;
 using NurseProblem.DomainLayer.UiModelle;
 using NurseProblem.InterfaceAdaptersLayer.ViewModels;
 using NurseProblem.UseCases.Interfaces;
@@ -44,7 +45,7 @@ namespace NurseProblem.UseCases
         /// </summary>
         /// <param name="nurse"> nurse to be stored</param>
         /// <returns></returns>
-        public async Task ExecuteSaveNurseAsync(CreateNurseCommand command)
+        public async Task<Nurse> ExecuteSaveNurseAsync(CreateNurseCommand command)
         {
             Validate(command);
 
@@ -55,7 +56,8 @@ namespace NurseProblem.UseCases
                 unavailableDays: command.UnavailableDays,
                 employmentStatus: command.EmploymentStatus              
                 );
-            await _repository.AddNurseToDbAsync(nurse);
+            await _repository.AddNurseAsync(nurse);
+            return nurse;
         }
 
         private void Validate(CreateNurseCommand command)
